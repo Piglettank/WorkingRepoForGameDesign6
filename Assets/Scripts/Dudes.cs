@@ -89,30 +89,8 @@ public class Dudes : MonoBehaviour
         }
     }
 
-    void HighFiveDude()
-    {
-        // SETS NEUTRAL FACE
-        if (trust == 0)
-        {
-            animator.SetInteger("mood", 0);
-        }
-        // SETS HAPPY FACE
-        else if (trust == 1)
-        {
-            animator.SetInteger("mood", 1);
-        }
-        // SETS SAD FACE
-        else if (trust == -1)
-        {
-            animator.SetInteger("mood", -1);
-        }
-        
-
-    }
-    
     void Update()
     {
         MoveLine();
-        
     }
 }
