@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Dudes : MonoBehaviour
 {
+    private Animator animator;
+
     public GameObject DudeOne, DudeTwo, DudeThree;
     public GameObject LineOne, LineTwo, LineThree;
 
@@ -11,6 +13,8 @@ public class Dudes : MonoBehaviour
     public List<GameObject> LineListOne;
     public List<GameObject> LineListTwo;
     public List<GameObject> LineListThree;
+
+    private int trust = 0;
 
     public int linePosition = 0;
 
@@ -35,50 +39,80 @@ public class Dudes : MonoBehaviour
         LineListThree.Add(LineOne);
         LineListThree.Add(LineThree);
         LineListThree.Add(LineTwo);
+
+        DudeOne.GetComponent<Animator>();
     }
 
     void MoveLine()
     {
+        // WHEN PRESS SPACE
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            // linePosition INCREMENTS BY 1
             linePosition++;
-            
-            if (linePosition == 1)
+
+            // LINEPOSITION CANNOT BE MORE THAN 3
+            if (linePosition == 4)
+            {
+                linePosition = 1;
+            }
+
+            // linePosition 1
+            if (linePosition <= 1)
             {
                 for (int i = 0; i < DudeList.Count; i++)
                 {
+                    // COMPARE DudeList WITH LineListOne
                     DudeList[i].transform.position = LineListOne[i].transform.position;
                 }
             }
 
+            // linePosition 2
             else if (linePosition == 2)
             {
                 for (int i = 0; i < DudeList.Count; i++)
                 {
+                    // COMPARE DudeList WITH LineListTwo
                     DudeList[i].transform.position = LineListTwo[i].transform.position;
                 }
             }
 
+            // linePosition 3
             else if (linePosition == 3)
             {
                 for (int i = 0; i < DudeList.Count; i++)
                 {
+                    // COMPARE DudeList WITH LineListThree
                     DudeList[i].transform.position = LineListThree[i].transform.position;  
                 }
             }
-
-            if (linePosition >= 3)
-            {
-                linePosition = 0;
-            }
-
-            Debug.Log(linePosition);
         }
     }
 
+    void HighFiveDude()
+    {
+        // SETS NEUTRAL FACE
+        if (trust == 0)
+        {
+            animator.SetInteger("mood", 0);
+        }
+        // SETS HAPPY FACE
+        else if (trust == 1)
+        {
+            animator.SetInteger("mood", 1);
+        }
+        // SETS SAD FACE
+        else if (trust == -1)
+        {
+            animator.SetInteger("mood", -1);
+        }
+        
+
+    }
     
     void Update()
     {
         MoveLine();
+        
     }
 }
