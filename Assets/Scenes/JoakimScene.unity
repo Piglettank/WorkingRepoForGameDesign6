@@ -525,11 +525,13 @@ MonoBehaviour:
   DudeOne: {fileID: 2102922415}
   DudeTwo: {fileID: 406985024}
   DudeThree: {fileID: 1461388883}
-  LineOne: {fileID: 679534612}
-  LineTwo: {fileID: 615717630}
-  LineThree: {fileID: 1065776004}
+  LineOne: {fileID: 615717630}
+  LineTwo: {fileID: 1065776004}
+  LineThree: {fileID: 679534612}
   DudeList: []
-  LineList: []
+  LineListOne: []
+  LineListTwo: []
+  LineListThree: []
   linePosition: 0
 --- !u!4 &1035209735
 Transform:
