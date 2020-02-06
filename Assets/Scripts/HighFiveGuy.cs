@@ -17,17 +17,19 @@ public class HighFiveGuy : MonoBehaviour
         // NEUTRAL STATE
         if (trust == 0)
         {
-            // if (Highfive)
+            if (PlayerNew.reaction == "HighFive")
             {
-                //trust = trust + 1;
+                trust = trust + 1;
+                Debug.Log("HighFiveGuy HAPPY");
             }
-            // if (FakeOut)
+            if (PlayerNew.reaction == "FakeOut")
             {
-                //trust = trust - 1;
+                trust = trust - 1;
+                Debug.Log("HighFiveGuy SAD");
             }
-            // if (Wait)
+             if (PlayerNew.reaction == "Ignored")
             {
-                
+                Debug.Log("HighFiveGuy IGNORED");
             }
         }
 

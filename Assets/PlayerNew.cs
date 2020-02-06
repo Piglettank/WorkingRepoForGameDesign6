@@ -7,7 +7,7 @@ public class PlayerNew : MonoBehaviour
     public GameObject[] dots = new GameObject[3];
     public bool newDude = true;
     public bool reacted = false;
-    public string reaction;
+    public static string reaction;
 
     private int dotCount; 
     private bool wait;

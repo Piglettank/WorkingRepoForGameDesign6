@@ -265,6 +265,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dude: {fileID: 133517980}
+--- !u!1 &192659244 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8925531265701434580, guid: bc0e1696c762e7b4885e05cc5745791b,
+    type: 3}
+  m_PrefabInstance: {fileID: 512954941}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &192659246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192659244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cab79cce05078be4095c0e31ba2206d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dots:
+  - {fileID: 358736452}
+  - {fileID: 1438455277}
+  - {fileID: 1427636029}
+  newDude: 1
+  reacted: 0
 --- !u!1 &349242872
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,6 +383,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 349242872}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &358736452 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4915654154921406254, guid: bc0e1696c762e7b4885e05cc5745791b,
+    type: 3}
+  m_PrefabInstance: {fileID: 512954941}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &406037048
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,6 +623,17 @@ MonoBehaviour:
           m_StringArgument: Fake Out
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 192659246}
+        m_MethodName: ToggleFakeOut
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &497698008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -636,6 +677,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4915654154192162575, guid: bc0e1696c762e7b4885e05cc5745791b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8925531265701434580, guid: bc0e1696c762e7b4885e05cc5745791b,
         type: 3}
       propertyPath: m_Name
@@ -1305,6 +1351,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 8.706, y: 0, z: 0}
+--- !u!1 &1427636029 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4915654155237278579, guid: bc0e1696c762e7b4885e05cc5745791b,
+    type: 3}
+  m_PrefabInstance: {fileID: 512954941}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1433743517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1398,6 +1450,12 @@ Transform:
   m_Father: {fileID: 534403523}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 27.896002, z: 0}
+--- !u!1 &1438455277 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4915654153335629513, guid: bc0e1696c762e7b4885e05cc5745791b,
+    type: 3}
+  m_PrefabInstance: {fileID: 512954941}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1452317063
 GameObject:
   m_ObjectHideFlags: 0
@@ -2250,6 +2308,17 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: High Five
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 192659246}
+        m_MethodName: ToggleHighFive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1796975752
