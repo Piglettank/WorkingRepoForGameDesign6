@@ -6,11 +6,15 @@ public class PlayerNew : MonoBehaviour
 {
     public GameObject[] dots = new GameObject[3];
     public bool newDude = true;
+    public bool reacted = false;
+    public string reaction;
 
     private int dotCount; 
     private bool wait;
     private float currentTime = 0;
-    static float addedTime = 3;
+    static float compareTime = 0;
+    private bool invoke = true;
+    private bool remove = false;
 
     IEnumerator DotsCo()
     {
@@ -18,37 +22,53 @@ public class PlayerNew : MonoBehaviour
         {
             yield return new WaitForSeconds(1f); 
             dotCount += 1;
-            Debug.Log("dotCount: " + dotCount);
         }
     }
 
-    IEnumerator WaitCo(float s, bool remove)
+    IEnumerator WaitCo(float s)
     {
         yield return new WaitForSeconds(s);
-        if (remove == true) newDude = true;
     }
 
-    public void Toggle()
+    public void NewDot()
     {
-        wait = false;
+        if (remove == true)
+        {
+            remove = false;
+            return;
+        }
+
+        dotCount += 1;
+        invoke = true;
+    }
+
+    public void ToggleHighFive()
+    {
+        newDude = true;
+        reacted = true;
+        reaction = "HighFive";
+    }
+
+    public void ToggleFakeOut()
+    {
+        newDude = true;
+        reacted = true;
+        reaction = "FakeOut";
     }
 
     public void Resett()
     {
+        CancelInvoke();
+
         for (int b = 0; b <= 2; ++b)
         {
             dots[b].SetActive(false);
         }
-
-        StopCoroutine(DotsCo());
-        StartCoroutine(WaitCo(2, true));
-        StopCoroutine(WaitCo(2, true));
     }
 
     void Start()
     {
         wait = false;
-        addedTime = 3;
         Time.timeScale = 1f;
         currentTime = Time.time;
         dotCount = -1;
@@ -58,11 +78,21 @@ public class PlayerNew : MonoBehaviour
     {
         currentTime = Time.time;
 
+
+        if (reacted == true)
+        {
+            Debug.Log("REACTED: " + reaction);
+        }
+
+
         if (newDude == true)
         {
+            Resett();
+            //remove = true;
             newDude = false;
             wait = true;
-            StartCoroutine(DotsCo());
+            reacted = false;
+            compareTime = Time.time + 4.5f;
         }
 
 
@@ -73,26 +103,30 @@ public class PlayerNew : MonoBehaviour
                 dots[dotCount].SetActive(true);
             }
 
-
-            if (currentTime >= addedTime)
+            if (invoke == true)
             {
-                Debug.Log("dots done");
+                Debug.Log("invoke");
+
+                Invoke("NewDot", 1f);
+                invoke = false;
+            }
+
+
+            if (currentTime >= compareTime)
+            {
+                currentTime = Time.time;
+
                 wait = false;
-                // remove dots
+                Resett();
 
-                StartCoroutine(WaitCo(1, false));
-                StopCoroutine(WaitCo(1, false));
+                reaction = "Ignored"; 
                 Debug.Log("IGNORED");
-                Resett(); 
-
-                //IGNORED
+                return; 
             }
 
         }else if (wait == false)
         {
             Resett();
-
         }
-
     }
 }
