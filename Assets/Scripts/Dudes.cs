@@ -16,11 +16,12 @@ public class Dudes : MonoBehaviour
 
     public int linePosition = 0;
 
-    public int highfiveTrust = 0;
-    public int shyguyTrust = 0;
-    public int toughguyTrust = 0;
+    //public int highfiveTrust = 0;
+    //public int shyguyTrust = 0;
+    //public int toughguyTrust = 0;
+    //public int trust = 0;
 
-    public int trust = 0;
+    public static bool hasFived = false;
 
     void Start()
     {
@@ -34,25 +35,25 @@ public class Dudes : MonoBehaviour
         animatorToughGuy = DudeThree.GetComponent<Animator>();
     }
 
-    void Mood()
-    {
-        if (highfiveTrust == 0)
-        {
-            animatorHighFiveGuy.SetInteger("mood", 0);
-        }
-        else if (trust == 1)
-        {
-            animatorHighFiveGuy.SetInteger("mood", 1);
-            animatorShyGuy.SetInteger("mood", 1);
-            animatorToughGuy.SetInteger("mood", 1);
-        }
-        else if (trust == -1)
-        {
-            animatorHighFiveGuy.SetInteger("mood", -1);
-            animatorShyGuy.SetInteger("mood", -1);
-            animatorToughGuy.SetInteger("mood", -1);
-        }
-    }
+    //void Mood()
+    //{
+    //    if (highfiveTrust == 0)
+    //    {
+    //        animatorHighFiveGuy.SetInteger("mood", 0);
+    //    }
+    //    else if (trust == 1)
+    //    {
+    //        animatorHighFiveGuy.SetInteger("mood", 1);
+    //        animatorShyGuy.SetInteger("mood", 1);
+    //        animatorToughGuy.SetInteger("mood", 1);
+    //    }
+    //    else if (trust == -1)
+    //    {
+    //        animatorHighFiveGuy.SetInteger("mood", -1);
+    //        animatorShyGuy.SetInteger("mood", -1);
+    //        animatorToughGuy.SetInteger("mood", -1);
+    //    }
+    //}
 
     void MoveLine()
     {
@@ -76,11 +77,13 @@ public class Dudes : MonoBehaviour
                 LineListOne.Add(LineOne);
                 LineListOne.Add(LineTwo);
                 LineListOne.Add(LineThree);
+                hasFived = true;
+                Debug.Log(hasFived);
 
-                if (highfiveTrust == 0)
-                {
-                    animatorHighFiveGuy.SetBool("mood", true);
-                }
+                //if (highfiveTrust == 0)
+                //{
+                //    animatorHighFiveGuy.SetBool("mood", true);
+                //}
 
                 for (int i = 0; i < DudeList.Count; i++)
                 {

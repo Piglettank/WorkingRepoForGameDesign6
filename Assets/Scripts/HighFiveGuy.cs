@@ -12,41 +12,110 @@ public class HighFiveGuy : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    //private void HighFiveAction()
-    //{
-    //    if (Dudes.DudeOne.transform.position == Dudes.LineOne.transform.position)
-    //    {
-    //        if (HighFiveTrust(trust) == 0)
-    //        {
-    //            animator.SetBool("mood", true);
-    //        }
-    //    }
-    //}
-
-    public int HighFiveTrust(int t)
+    void TrustCalculator()
     {
+        // NEUTRAL STATE
         if (trust == 0)
         {
-            // MAKE NEUTRAL FACE
-            // 
-        }
-        if (trust == 1)
-        {
-            // MAKE HAPPY FACE
-        }
-        if (trust == -1)
-        {
-            // MAKE SAD FACE
+            // if (Highfive)
+            {
+                //trust = trust + 1;
+            }
+            // if (FakeOut)
+            {
+                //trust = trust - 1;
+            }
+            // if (Wait)
+            {
+                
+            }
         }
 
-        trust = t;
+        // HAPPY STATE
+        else if (trust == 1)
+        {
+            // if (HighFive)
+            {
 
-        return t;
+            }
+            // if (FakeOut)
+            {
+                //trust = trust - 1;
+            }
+            // if (Wait)
+            {
+                //trust = trust - 1;
+            }
+        }
+
+        // SAD STATE
+        else
+        {
+            // if (HighFive)
+            {
+                //trust = trust + 2;
+            }
+            // if (FakeOut)
+            {
+                
+            }
+            // if (Wait)
+            {
+
+            }
+        }
+
+        // trust CANNOT BE MORE THAN 1 
+        // trust CANNOT BE LESS THAN -1
+        if (trust <= -2)
+        {
+            trust = -1;
+        }
+        if (trust >= 2)
+        {
+            trust = 1;
+        }
+    }
+
+    void Reaction()
+    {
+        // SET MOOD TO NEUTRAL
+        if (trust == 0)
+        {
+            animator.SetInteger("mood", 0);
+        }
+        // SET MOOD TO HAPPY
+        else if (trust == 1)
+        {
+            animator.SetInteger("mood", 1);
+        }
+        // SET MOOD TO SAD
+        else
+        {
+            animator.SetInteger("mood", -1);
+        }
+    }
+
+    void Action()
+    {
+        //// if (HighFive)
+        //{
+        //    animator.SetBool("HighFive", true);
+        //}
+        //// if (FakeOut)
+        //{
+        //    animator.SetBool("HighFive", true);
+        //}
+        //// if (Wait)
+        //{
+        //    animator.SetBool("HighFive", true);
+        //}
     }
 
     void Update()
     {
-        HighFiveTrust(trust);
-        //HighFiveAction();
+        TrustCalculator();
+        Reaction();
+        Action();
     }
 }

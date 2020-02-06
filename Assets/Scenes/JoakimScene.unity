@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 133517986}
   - component: {fileID: 133517982}
   - component: {fileID: 133517981}
+  - component: {fileID: 133517987}
   m_Layer: 0
   m_Name: HighFiveDude
   m_TagString: Untagged
@@ -251,6 +252,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trust: 0
+--- !u!114 &133517987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133517980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a16ddddaadd05f2409989b239fb8946c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dude: {fileID: 133517980}
 --- !u!1 &349242872
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,6 +371,7 @@ GameObject:
   - component: {fileID: 406037052}
   - component: {fileID: 406037051}
   - component: {fileID: 406037050}
+  - component: {fileID: 406037054}
   - component: {fileID: 406037049}
   m_Layer: 0
   m_Name: ToughGuy
@@ -461,6 +476,19 @@ Transform:
   m_Father: {fileID: 534403523}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 35.335003, z: 0}
+--- !u!114 &406037054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406037048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a16ddddaadd05f2409989b239fb8946c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dude: {fileID: 406037048}
 --- !u!1 &497698005
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,7 +801,6 @@ GameObject:
   m_Component:
   - component: {fileID: 534403523}
   - component: {fileID: 534403522}
-  - component: {fileID: 534403524}
   m_Layer: 0
   m_Name: Dudes
   m_TagString: Untagged
@@ -807,14 +834,6 @@ MonoBehaviour:
   - {fileID: 1816531729}
   - {fileID: 1433743517}
   - {fileID: 525970991}
-  LineListTwo:
-  - {fileID: 1433743517}
-  - {fileID: 525970991}
-  - {fileID: 1816531729}
-  LineListThree:
-  - {fileID: 525970991}
-  - {fileID: 1816531729}
-  - {fileID: 1433743517}
   linePosition: 0
 --- !u!4 &534403523
 Transform:
@@ -836,18 +855,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &534403524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534403521}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ddd9d42585f6f848bfdaf78414d65d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &634601032
 GameObject:
   m_ObjectHideFlags: 0
@@ -2386,8 +2393,8 @@ GameObject:
   - component: {fileID: 2037822010}
   - component: {fileID: 2037822009}
   - component: {fileID: 2037822008}
-  - component: {fileID: 2037822007}
   - component: {fileID: 2037822012}
+  - component: {fileID: 2037822007}
   m_Layer: 0
   m_Name: ShyGuy
   m_TagString: Untagged
@@ -2500,9 +2507,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2037822006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ddd9d42585f6f848bfdaf78414d65d5, type: 3}
+  m_Script: {fileID: 11500000, guid: a16ddddaadd05f2409989b239fb8946c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dude: {fileID: 2037822006}
 --- !u!1 &2039923494
 GameObject:
   m_ObjectHideFlags: 0
