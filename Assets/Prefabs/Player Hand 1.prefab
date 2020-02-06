@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!95 &8925531267013020097
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647452316615143096}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 131d95d271434d0428ff3f235c0ba30a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4915654153335629513
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,7 +271,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8925531265701434587}
-  - component: {fileID: 4915654154192162575}
+  - component: {fileID: 7682996366241955089}
   m_Layer: 0
   m_Name: Player Hand 1
   m_TagString: Untagged
@@ -278,7 +297,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4915654154192162575
+--- !u!114 &7682996366241955089
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -287,33 +306,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8925531265701434580}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34b8faf77932d7c4c8cd87a78b2a2f0c, type: 3}
+  m_Script: {fileID: 11500000, guid: cab79cce05078be4095c0e31ba2206d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dots:
   - {fileID: 4915654154921406254}
   - {fileID: 4915654153335629513}
   - {fileID: 4915654155237278579}
-  newDude: 1
---- !u!95 &8925531267013020097
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 647452316615143096}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 131d95d271434d0428ff3f235c0ba30a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &8925531267430496177
 PrefabInstance:
   m_ObjectHideFlags: 0
