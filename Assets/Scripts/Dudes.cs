@@ -4,24 +4,17 @@ using UnityEngine;
 
 public class Dudes : MonoBehaviour
 {
-    private Animator animatorHighFiveGuy;
-    private Animator animatorShyGuy;
-    private Animator animatorToughGuy;
-
     public GameObject DudeOne, DudeTwo, DudeThree;
     public GameObject LineOne, LineTwo, LineThree;
 
     public List<GameObject> DudeList;
-    public List<GameObject> LineListOne;
+    public List<GameObject> LineList;
 
     public int linePosition = 0;
 
-    //public int highfiveTrust = 0;
-    //public int shyguyTrust = 0;
-    //public int toughguyTrust = 0;
-    //public int trust = 0;
-
-    public static bool hasFived = false;
+    public static bool isHighFiveGuy = false;
+    public static bool isShyGuy = false;
+    public static bool isToughGuy = false;
 
     void Start()
     {
@@ -30,34 +23,19 @@ public class Dudes : MonoBehaviour
         DudeList.Add(DudeTwo);
         DudeList.Add(DudeThree);
 
-        animatorHighFiveGuy = DudeOne.GetComponent<Animator>();
-        animatorShyGuy = DudeTwo.GetComponent<Animator>();
-        animatorToughGuy = DudeThree.GetComponent<Animator>();
-    }
+        LineList = new List<GameObject>();
+        LineList.Add(LineOne);
+        LineList.Add(LineTwo);
+        LineList.Add(LineThree);
 
-    //void Mood()
-    //{
-    //    if (highfiveTrust == 0)
-    //    {
-    //        animatorHighFiveGuy.SetInteger("mood", 0);
-    //    }
-    //    else if (trust == 1)
-    //    {
-    //        animatorHighFiveGuy.SetInteger("mood", 1);
-    //        animatorShyGuy.SetInteger("mood", 1);
-    //        animatorToughGuy.SetInteger("mood", 1);
-    //    }
-    //    else if (trust == -1)
-    //    {
-    //        animatorHighFiveGuy.SetInteger("mood", -1);
-    //        animatorShyGuy.SetInteger("mood", -1);
-    //        animatorToughGuy.SetInteger("mood", -1);
-    //    }
-    //}
+        isHighFiveGuy = true;
+        //linePosition = -1;
+    }
 
     void MoveLine()
     {
         // WHEN PRESS SPACE
+        // WHEN COOLDOWN BOOL IS TRUE INSTEAD OF SPACE
         if (Input.GetKeyDown(KeyCode.Space))
         {
             // linePosition INCREMENTS BY 1
@@ -70,60 +48,72 @@ public class Dudes : MonoBehaviour
             }
 
             // linePosition 0
-            // HIGH FIVE GUY IN FRONT
+            // HighFiveGuy IN FRONT
             if (linePosition == 0)
             {
-                LineListOne.Clear();
-                LineListOne.Add(LineOne);
-                LineListOne.Add(LineTwo);
-                LineListOne.Add(LineThree);
-                hasFived = true;
-                Debug.Log(hasFived);
+                isHighFiveGuy = true;
+                // if PLAYER
+                // BOOL ACTION DONE
+                // BUTTON PRESS || IGNORE
+                
+                // DO THIS AFTER ACTION
+                // FIX LIST
+                LineList.Clear();
+                LineList.Add(LineOne);
+                LineList.Add(LineTwo);
+                LineList.Add(LineThree);
 
-                //if (highfiveTrust == 0)
-                //{
-                //    animatorHighFiveGuy.SetBool("mood", true);
-                //}
-
+                // UPDATE QUEUE SYSTEM
                 for (int i = 0; i < DudeList.Count; i++)
                 {
                     // COMPARE DudeList WITH LineListOne
-                    DudeList[i].transform.position = LineListOne[i].transform.position;
+                    DudeList[i].transform.position = LineList[i].transform.position;
                 }
+                // INCREMENT linePosition
+                isHighFiveGuy = false;
             }
 
             // linePosition 1
-            // SHY GUY IN FRONT
+            // ShyGuy IN FRONT
             else if (linePosition == 1)
             {
-                LineListOne.Clear();
-                LineListOne.Add(LineThree);
-                LineListOne.Add(LineOne);
-                LineListOne.Add(LineTwo);
+                isShyGuy = true;
+
+                LineList.Clear();
+                LineList.Add(LineThree);
+                LineList.Add(LineOne);
+                LineList.Add(LineTwo);
 
                 for (int i = 0; i < DudeList.Count; i++)
                 {
                     // COMPARE DudeList WITH LineListTwo
-                    DudeList[i].transform.position = LineListOne[i].transform.position;
+                    DudeList[i].transform.position = LineList[i].transform.position;
                 }
+                // isShyGuy = false;
             }
 
             // linePosition 2
-            // TOUGH GUY IN FRONT
+            // ToughGuy IN FRONT
             else if (linePosition == 2)
             {
-                LineListOne.Clear();
-                LineListOne.Add(LineTwo);
-                LineListOne.Add(LineThree);
-                LineListOne.Add(LineOne);
+                isToughGuy = true;
+
+                LineList.Clear();
+                LineList.Add(LineTwo);
+                LineList.Add(LineThree);
+                LineList.Add(LineOne);
 
                 for (int i = 0; i < DudeList.Count; i++)
                 {
                     // COMPARE DudeList WITH LineListThree
-                    DudeList[i].transform.position = LineListOne[i].transform.position;  
+                    DudeList[i].transform.position = LineList[i].transform.position;  
                 }
+
+                // isToughGuy = false;
             }
         }
+
+
     }
 
     void Update()

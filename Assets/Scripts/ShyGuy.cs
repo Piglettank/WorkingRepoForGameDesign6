@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HighFiveGuy : MonoBehaviour
+public class ShyGuy : MonoBehaviour
 {
     private Animator animator;
     public int trust = 0;
@@ -14,28 +14,27 @@ public class HighFiveGuy : MonoBehaviour
 
     void TrustCalculator()
     {
-        if (Dudes.isHighFiveGuy)
+        if (Dudes.isShyGuy)
         {
-            Debug.Log("its high five guy" + Dudes.isHighFiveGuy);
             // NEUTRAL STATE
             if (trust == 0)
             {
                 if (PlayerNew.reaction == "HighFive")
                 {
-                    DudeHand.isHighFive = true;
+                    DudeHand.isIgnore = true;
                     trust = trust + 1;
                     // PLAY SFX
-
                 }
                 if (PlayerNew.reaction == "FakeOut")
                 {
-                    DudeHand.isHighFive = true;
-                    trust = trust - 1;
+                    DudeHand.isIgnore = true;
+                    Debug.Log("neutral face");
                     // PLAY SFX
                 }
                 if (PlayerNew.reaction == "Ignored")
                 {
-                    DudeHand.isHighFive = true;
+                    DudeHand.isIgnore = true;
+                    trust = trust - 1;
                     // PLAY SFX
                 }
             }
@@ -51,13 +50,12 @@ public class HighFiveGuy : MonoBehaviour
                 if (PlayerNew.reaction == "FakeOut")
                 {
                     DudeHand.isHighFive = true;
-                    trust = trust - 1;
                     // PLAY SFX
                 }
                 if (PlayerNew.reaction == "Ignored")
                 {
                     DudeHand.isHighFive = true;
-                    trust = trust - 1;
+                    trust = trust - 2;
                     // PLAY SFX
                 }
             }
@@ -67,23 +65,22 @@ public class HighFiveGuy : MonoBehaviour
             {
                 if (PlayerNew.reaction == "HighFive")
                 {
-                    DudeHand.isHighFive = true;
-                    trust = trust + 2;
+                    DudeHand.isIgnore = true;
+                    trust = 0;
                     // PLAY SFX
                 }
                 if (PlayerNew.reaction == "FakeOut")
                 {
-                    DudeHand.isHighFive = true;
+                    DudeHand.isIgnore = true;
                     // PLAY SFX
                 }
                 if (PlayerNew.reaction == "Ignored")
                 {
-                    DudeHand.isHighFive = true;
+                    DudeHand.isIgnore = true;
                     // PLAY SFX
                 }
             }
         }
-
 
         // trust CANNOT BE MORE THAN 1 
         // trust CANNOT BE LESS THAN -1
@@ -95,8 +92,6 @@ public class HighFiveGuy : MonoBehaviour
         {
             trust = 1;
         }
-
-        
     }
 
     void Reaction()
