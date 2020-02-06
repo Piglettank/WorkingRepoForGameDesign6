@@ -5,58 +5,92 @@ using UnityEngine;
 public class PlayerNew : MonoBehaviour
 {
     public GameObject[] dots = new GameObject[3];
-    public bool newDude = true;
-    public bool reacted = false;
+
     public static string reaction;
 
-    private int dotCount; 
-    private bool wait;
+ 
+
     private float currentTime = 0;
     static float compareTime = 0;
-    private bool invoke = true;
-    private bool remove = false;
 
-    IEnumerator DotsCo()
+    private int dotCount;
+
+    private bool newDude;
+    private bool reacted;
+    private bool wait;
+    private bool invoke;
+    private bool remove;
+
+
+    //ADD TO THE DOT COUNTER SO THAT A DOT WOULD BE ADDED IN FIXED UPDATE
+    public void NewDot() 
     {
-        for (int a = 0; a <= 4; ++a)
-        {
-            yield return new WaitForSeconds(1f); 
-            dotCount += 1;
-        }
-    }
-
-    IEnumerator WaitCo(float s)
-    {
-        yield return new WaitForSeconds(s);
-    }
-
-    public void NewDot()
-    {
-        if (remove == true)
-        {
-            remove = false;
-            return;
-        }
-
         dotCount += 1;
         invoke = true;
     }
 
-    public void ToggleHighFive()
+
+    //ACTIVATED BY THE HIGH_FIVE BUTTON
+    public void ToggleHighFive() 
     {
-        newDude = true;
-        reacted = true;
-        reaction = "HighFive";
+        //SETS REACTION TO HIGH FIVE AFTER 1S DELAY
+        Invoke("SetReactionHF", 1f);
+        Invoke("NewDudeSetup", 3f);
+        Debug.Log("inside: ToggleHighFive)");
+        wait = false;
     }
 
-    public void ToggleFakeOut()
+
+
+    //ACTIVATED BY THE FAKE_OUT BUTTON
+    public void ToggleFakeOut() 
     {
-        newDude = true;
-        reacted = true;
-        reaction = "FakeOut";
+        //SETS REACTION TO FAKE OUT AFTER 1S DELAY
+        Invoke("SetReactionFO", 1f);
+        Invoke("NewDudeSetup", 3f);
+        Debug.Log("inside: ToggleFakeOut");
+        wait = false;
     }
 
-    public void Resett()
+
+
+    //SET REACTION TO HIGH FIVE
+    public void SetReactionHF() 
+    {
+        Debug.Log("inside: SetReactionHF");
+        reaction = "High Five";
+        reacted = true;
+        Debug.Log("REACTED: " + reaction);
+
+        //MAKE IT POSSIBLE TO SPAWN A NEW DUDE AFTER 1S DELAY 
+    }
+
+
+    //SET REACTION TO FAKE OUT
+    public void SetReactionFO() 
+    {
+        Debug.Log("inside: SetReactionFO");
+        reaction = "Fake Out";
+        reacted = true;
+        Debug.Log("REACTED: " + reaction);
+
+        //MAKE IT POSSIBLE TO SPAWN A NEW DUDE AFTER 1S DELAY
+    }
+
+
+
+    //ACTIVATE SPAWN OF A NEW DUDE IN FIXED UPDATE
+    public void NewDudeSetup()  
+    {
+        Debug.Log("inside: NewDudeSetup");
+        newDude = true;
+        remove = true;
+    }
+
+
+
+    //REMOVE ALL THE DOTS
+    public void Resett() 
     {
         CancelInvoke();
 
@@ -66,43 +100,61 @@ public class PlayerNew : MonoBehaviour
         }
     }
 
+
+    // START
     void Start()
     {
+        //MAKE A DUDE
+        newDude = true; 
         wait = false;
+
+        //DOTS SET UP
+        invoke = true;
+        remove = false;
+        dotCount = -1;
+
+        //TIME SET UP
         Time.timeScale = 1f;
         currentTime = Time.time;
-        dotCount = -1;
+        compareTime = 0;
     }
 
+
+    // FIXED UPDATE
     void FixedUpdate()
     {
+        //UPDATE WAITING TIME 
         currentTime = Time.time;
 
 
-        if (reacted == true)
-        {
-            Debug.Log("REACTED: " + reaction);
-        }
-
-
+        //MAKE A NEW DUDE 
         if (newDude == true)
         {
-            Resett();
-            //remove = true;
-            newDude = false;
-            wait = true;
-            reacted = false;
-            compareTime = Time.time + 4.5f;
+            Resett();           //REMOVE EXISITING DOTS
+            newDude = false;    //JUST 1 MORE DUDE
+            wait = true;        //WAITING STARS
+            reacted = false;    //NO REACTION FOR THE NEW DUDE
+            invoke = true;      //YES, ADD NEW DOTS
+            remove = false;     //NO, WE'RE NOT REMOVING EXISTING DOTS
+            dotCount = -1;      //RESET THE dotCount
+
+            compareTime = Time.time + 4.5f; //NEW TIMESTAMP FOR THE 'IGNORED' REACTION 
         }
 
 
+        //ADD 1 DOT PER SECOND
         if (wait == true)
         {
+            // CHECK IF dotCount IS WITHIN ARRAY INDEX
             if (dotCount >= 0 && dotCount <= 2)
             {
-                dots[dotCount].SetActive(true);
+                if (remove == false)//DON'T ADD A NEW DOT DURING THE FRAME WHERE WE RESET THE DOTS
+                {
+                    dots[dotCount].SetActive(true);
+                }
             }
 
+            // ADD 1 TO dotCount PER SECOND 
             if (invoke == true)
             {
                 Debug.Log("invoke");
@@ -111,19 +163,22 @@ public class PlayerNew : MonoBehaviour
                 invoke = false;
             }
 
-
+            //CHECK FOR IGNORED REACTION
             if (currentTime >= compareTime)
             {
                 currentTime = Time.time;
+                reaction = "Ignored";
+                Debug.Log("REACTED: " + reaction);
 
+                // DOTS RESET
                 wait = false;
+                remove = true; 
                 Resett();
 
-                reaction = "Ignored"; 
-                Debug.Log("IGNORED");
                 return; 
             }
 
+            //IF NOT WAITING, RESET
         }else if (wait == false)
         {
             Resett();
