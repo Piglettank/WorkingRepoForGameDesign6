@@ -29,16 +29,15 @@ public class Dudes : MonoBehaviour
         LineList.Add(LineThree);
 
         isHighFiveGuy = true;
-        //linePosition = -1;
     }
 
     void MoveLine()
     {
-        // WHEN PRESS SPACE
+        // WHEN PRESS SPACE (TEMPORARY)
         // WHEN COOLDOWN BOOL IS TRUE INSTEAD OF SPACE
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            // linePosition INCREMENTS BY 1
+            // linePosition INCREMENTS BY 1 (TEMPORARY)
             linePosition++;
 
             // LINEPOSITION CANNOT BE MORE THAN 3
@@ -55,21 +54,21 @@ public class Dudes : MonoBehaviour
                 // if PLAYER
                 // BOOL ACTION DONE
                 // BUTTON PRESS || IGNORE
-                
+
                 // DO THIS AFTER ACTION
-                // FIX LIST
+                // UPDATE QUEUE SYSTEM
                 LineList.Clear();
                 LineList.Add(LineOne);
                 LineList.Add(LineTwo);
                 LineList.Add(LineThree);
 
-                // UPDATE QUEUE SYSTEM
+                // MOVE DUDES
                 for (int i = 0; i < DudeList.Count; i++)
                 {
-                    // COMPARE DudeList WITH LineListOne
+                    // COMPARE DudeList WITH LineList
                     DudeList[i].transform.position = LineList[i].transform.position;
                 }
-                // INCREMENT linePosition
+                //linePosition++;
                 isHighFiveGuy = false;
             }
 
@@ -78,18 +77,25 @@ public class Dudes : MonoBehaviour
             else if (linePosition == 1)
             {
                 isShyGuy = true;
+                // if PLAYER
+                // BOOL ACTION DONE
+                // BUTTON PRESS || IGNORE
 
+                // DO THIS AFTER ACTION
+                // UPDATE QUEUE SYSTEM
                 LineList.Clear();
                 LineList.Add(LineThree);
                 LineList.Add(LineOne);
                 LineList.Add(LineTwo);
 
+                // MOVE DUDES
                 for (int i = 0; i < DudeList.Count; i++)
                 {
-                    // COMPARE DudeList WITH LineListTwo
+                    // COMPARE DudeList WITH LineList
                     DudeList[i].transform.position = LineList[i].transform.position;
                 }
-                // isShyGuy = false;
+                //linePosition++;
+                isShyGuy = false;
             }
 
             // linePosition 2
@@ -97,23 +103,27 @@ public class Dudes : MonoBehaviour
             else if (linePosition == 2)
             {
                 isToughGuy = true;
+                // if PLAYER
+                // BOOL ACTION DONE
+                // BUTTON PRESS || IGNORE
 
+                // DO THIS AFTER ACTION
+                // UPDATE QUEUE SYSTEM
                 LineList.Clear();
                 LineList.Add(LineTwo);
                 LineList.Add(LineThree);
                 LineList.Add(LineOne);
 
+                // MOVE DUDES
                 for (int i = 0; i < DudeList.Count; i++)
                 {
-                    // COMPARE DudeList WITH LineListThree
+                    // COMPARE DudeList WITH LineList
                     DudeList[i].transform.position = LineList[i].transform.position;  
                 }
-
-                // isToughGuy = false;
+                //linePosition++;
+                isToughGuy = false;
             }
         }
-
-
     }
 
     void Update()

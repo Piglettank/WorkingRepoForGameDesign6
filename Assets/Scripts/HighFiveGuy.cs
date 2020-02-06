@@ -16,7 +16,6 @@ public class HighFiveGuy : MonoBehaviour
     {
         if (Dudes.isHighFiveGuy)
         {
-            Debug.Log("its high five guy" + Dudes.isHighFiveGuy);
             // NEUTRAL STATE
             if (trust == 0)
             {
