@@ -8,12 +8,14 @@ public class PlayerNew : MonoBehaviour
 
     public static string reaction;
 
- 
-
     private float currentTime = 0;
     static float compareTime = 0;
 
+    private float compareTimeW = 0;
+    private float compareTimeW2 = 0;
+
     private int dotCount;
+    private int toggle = 0;
 
     private bool newDude;
     private bool reacted;
@@ -23,7 +25,7 @@ public class PlayerNew : MonoBehaviour
 
 
     //ADD TO THE DOT COUNTER SO THAT A DOT WOULD BE ADDED IN FIXED UPDATE
-    public void NewDot() 
+    public void NewDot()
     {
         dotCount += 1;
         invoke = true;
@@ -31,31 +33,32 @@ public class PlayerNew : MonoBehaviour
 
 
     //ACTIVATED BY THE HIGH_FIVE BUTTON
-    public void ToggleHighFive() 
+    public void ToggleHighFive()
     {
-        //SETS REACTION TO HIGH FIVE AFTER 1S DELAY
-        Invoke("SetReactionHF", 1f);
-        Invoke("NewDudeSetup", 3f);
-        Debug.Log("inside: ToggleHighFive)");
         wait = false;
+        toggle = 1;
+        compareTimeW = Time.time + 1;
+        compareTimeW2 = Time.time + 3;
+        Debug.Log("inside: ToggleHighFive. compareTimeW: " + compareTimeW );
+
     }
 
 
 
     //ACTIVATED BY THE FAKE_OUT BUTTON
-    public void ToggleFakeOut() 
+    public void ToggleFakeOut()
     {
-        //SETS REACTION TO FAKE OUT AFTER 1S DELAY
-        Invoke("SetReactionFO", 1f);
-        Invoke("NewDudeSetup", 3f);
-        Debug.Log("inside: ToggleFakeOut");
         wait = false;
+        toggle = 2;
+        compareTimeW = Time.time + 1;
+        compareTimeW2 = Time.time + 3;
+        Debug.Log("inside: ToggleFakeOut. compareTimeW2: " + compareTimeW);
     }
 
 
 
     //SET REACTION TO HIGH FIVE
-    public void SetReactionHF() 
+    public void SetReactionHF()
     {
         Debug.Log("inside: SetReactionHF");
         reaction = "High Five";
@@ -67,7 +70,7 @@ public class PlayerNew : MonoBehaviour
 
 
     //SET REACTION TO FAKE OUT
-    public void SetReactionFO() 
+    public void SetReactionFO()
     {
         Debug.Log("inside: SetReactionFO");
         reaction = "Fake Out";
@@ -80,7 +83,7 @@ public class PlayerNew : MonoBehaviour
 
 
     //ACTIVATE SPAWN OF A NEW DUDE IN FIXED UPDATE
-    public void NewDudeSetup()  
+    public void NewDudeSetup()
     {
         Debug.Log("inside: NewDudeSetup");
         newDude = true;
@@ -90,7 +93,7 @@ public class PlayerNew : MonoBehaviour
 
 
     //REMOVE ALL THE DOTS
-    public void Resett() 
+    public void Resett()
     {
         CancelInvoke();
 
@@ -105,7 +108,7 @@ public class PlayerNew : MonoBehaviour
     void Start()
     {
         //MAKE A DUDE
-        newDude = true; 
+        newDude = true;
         wait = false;
 
         //DOTS SET UP
@@ -125,6 +128,25 @@ public class PlayerNew : MonoBehaviour
     {
         //UPDATE WAITING TIME 
         currentTime = Time.time;
+
+        if (toggle == 1 || toggle == 2 || toggle == 3)
+        {
+
+            Debug.Log("inside: toggle true. Time.time: " + Time.time + ". compareTimeW: " + compareTimeW);
+
+
+            if (Time.time >= compareTimeW)
+            {
+                if (toggle == 1) SetReactionHF();
+                if (toggle == 2) SetReactionFO();
+            }
+
+            if (Time.time >= compareTimeW2)
+            {
+                NewDudeSetup();
+                toggle = 0;
+            }
+        }
 
 
         //MAKE A NEW DUDE 
@@ -168,18 +190,22 @@ public class PlayerNew : MonoBehaviour
             {
                 currentTime = Time.time;
                 reaction = "Ignored";
+                toggle = 3;
+                compareTimeW = Time.time + 1;
+                compareTimeW2 = Time.time + 3;
                 Debug.Log("REACTED: " + reaction);
 
                 // DOTS RESET
                 wait = false;
-                remove = true; 
+                remove = true;
                 Resett();
 
-                return; 
+                return;
             }
 
             //IF NOT WAITING, RESET
-        }else if (wait == false)
+        }
+        else if (wait == false)
         {
             Resett();
         }
