@@ -8,6 +8,11 @@ public class PlayerNew : MonoBehaviour
 
     public static string reaction;
     public static bool newDude;
+    public static bool buttonHighFive = false;
+    public static bool buttonFakeOut = false;
+    public static bool ignore = false;
+    public static bool iLoveJoakim = false;
+    public static bool cooldown = false;
 
 
     private float currentTime = 0;
@@ -40,8 +45,8 @@ public class PlayerNew : MonoBehaviour
         toggle = 1;
         compareTimeW = Time.time + 1;
         compareTimeW2 = Time.time + 3;
-        Debug.Log("inside: ToggleHighFive. compareTimeW: " + compareTimeW );
-
+        buttonHighFive = true;
+        iLoveJoakim = true;
     }
 
 
@@ -49,11 +54,12 @@ public class PlayerNew : MonoBehaviour
     //ACTIVATED BY THE FAKE_OUT BUTTON
     public void ToggleFakeOut()
     {
+        buttonFakeOut = true;
         wait = false;
         toggle = 2;
         compareTimeW = Time.time + 1;
         compareTimeW2 = Time.time + 3;
-        Debug.Log("inside: ToggleFakeOut. compareTimeW2: " + compareTimeW);
+        iLoveJoakim = true;
     }
 
 
@@ -61,24 +67,18 @@ public class PlayerNew : MonoBehaviour
     //SET REACTION TO HIGH FIVE
     public void SetReactionHF()
     {
-        Debug.Log("inside: SetReactionHF");
         reaction = "High Five";
         reacted = true;
         Debug.Log("REACTED: " + reaction);
-
-        //MAKE IT POSSIBLE TO SPAWN A NEW DUDE AFTER 1S DELAY 
     }
 
 
     //SET REACTION TO FAKE OUT
     public void SetReactionFO()
     {
-        Debug.Log("inside: SetReactionFO");
         reaction = "Fake Out";
         reacted = true;
         Debug.Log("REACTED: " + reaction);
-
-        //MAKE IT POSSIBLE TO SPAWN A NEW DUDE AFTER 1S DELAY
     }
 
 
@@ -86,7 +86,6 @@ public class PlayerNew : MonoBehaviour
     //ACTIVATE SPAWN OF A NEW DUDE IN FIXED UPDATE
     public void NewDudeSetup()
     {
-        Debug.Log("inside: NewDudeSetup");
         newDude = true;
         remove = true;
     }
@@ -132,10 +131,6 @@ public class PlayerNew : MonoBehaviour
 
         if (toggle == 1 || toggle == 2 || toggle == 3)
         {
-
-            Debug.Log("inside: toggle true. Time.time: " + Time.time + ". compareTimeW: " + compareTimeW);
-
-
             if (Time.time >= compareTimeW)
             {
                 if (toggle == 1) SetReactionHF();
@@ -146,7 +141,9 @@ public class PlayerNew : MonoBehaviour
             {
                 NewDudeSetup();
                 toggle = 0;
+                iLoveJoakim = false;
             }
+            cooldown = true;
         }
 
 
@@ -180,8 +177,6 @@ public class PlayerNew : MonoBehaviour
             // ADD 1 TO dotCount PER SECOND 
             if (invoke == true)
             {
-                Debug.Log("invoke");
-
                 Invoke("NewDot", 1f);
                 invoke = false;
             }
@@ -194,6 +189,8 @@ public class PlayerNew : MonoBehaviour
                 toggle = 3;
                 compareTimeW = Time.time + 1;
                 compareTimeW2 = Time.time + 3;
+                ignore = true;
+                iLoveJoakim = true; 
                 Debug.Log("REACTED: " + reaction);
 
                 // DOTS RESET
