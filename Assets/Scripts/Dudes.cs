@@ -30,34 +30,32 @@ public class Dudes : MonoBehaviour
 
         isHighFiveGuy = true;
         PlayerNew.newDude = true;
-        Debug.Log(PlayerNew.newDude);
     }
 
     void MoveLine()
     {
-        // WHEN COOLDOWN BOOL IS TRUE INSTEAD OF SPACE
-            Debug.Log("Hello");
-            // LINEPOSITION CANNOT BE MORE THAN 3
-            if (linePosition == 3)
-            {
-                linePosition = 0;
-            }
+        // LINEPOSITION CANNOT BE MORE THAN 3
+        if (linePosition == 3)
+        {
+            linePosition = 0;
+        }
+
+        // REPLACE SHIT FUCKING SPACE BUTTON AND MAKE IT WORK STUPID
+        if (Input.GetKeyDown(KeyCode.Space)) 
+        {
+            linePosition++;
 
             // linePosition 0
             // HighFiveGuy IN FRONT
             if (linePosition == 0)
             {
                 isHighFiveGuy = true;
-                Debug.Log("line 0");
-                Debug.Log(PlayerNew.buttonFakeOut);
+
                 if (PlayerNew.buttonHighFive || PlayerNew.buttonFakeOut || PlayerNew.ignore)
                 {
-                    Debug.Log("Action Made");
-                    // DO THIS AFTER ACTION
                     if (PlayerNew.cooldown)
                     // UPDATE QUEUE SYSTEM
                     {
-                        Debug.Log("put debug here");
                         LineList.Clear();
                         LineList.Add(LineOne);
                         LineList.Add(LineTwo);
@@ -69,9 +67,7 @@ public class Dudes : MonoBehaviour
                             // COMPARE DudeList WITH LineList
                             DudeList[i].transform.position = LineList[i].transform.position;
                         }
-                        linePosition++;
                         isHighFiveGuy = false;
-                        Debug.Log("List updated");
                     }
                 }
             }
@@ -81,25 +77,25 @@ public class Dudes : MonoBehaviour
             else if (linePosition == 1)
             {
                 isShyGuy = true;
-                // if PLAYER
-                // BOOL ACTION DONE
-                // BUTTON PRESS || IGNORE
 
-                // DO THIS AFTER ACTION
-                // UPDATE QUEUE SYSTEM
-                LineList.Clear();
-                LineList.Add(LineThree);
-                LineList.Add(LineOne);
-                LineList.Add(LineTwo);
-
-                // MOVE DUDES
-                for (int i = 0; i < DudeList.Count; i++)
+                if (PlayerNew.buttonHighFive || PlayerNew.buttonFakeOut || PlayerNew.ignore)
                 {
-                    // COMPARE DudeList WITH LineList
-                    DudeList[i].transform.position = LineList[i].transform.position;
+                    if (PlayerNew.cooldown)
+                    {
+                        LineList.Clear();
+                        LineList.Add(LineThree);
+                        LineList.Add(LineOne);
+                        LineList.Add(LineTwo);
+
+                        // MOVE DUDES
+                        for (int i = 0; i < DudeList.Count; i++)
+                        {
+                            // COMPARE DudeList WITH LineList
+                            DudeList[i].transform.position = LineList[i].transform.position;
+                        }
+                        isShyGuy = false;
+                    }
                 }
-                //linePosition++;
-                isShyGuy = false;
             }
 
             // linePosition 2
@@ -107,26 +103,29 @@ public class Dudes : MonoBehaviour
             else if (linePosition == 2)
             {
                 isToughGuy = true;
-                // if PLAYER
-                // BOOL ACTION DONE
-                // BUTTON PRESS || IGNORE
 
-                // DO THIS AFTER ACTION
-                // UPDATE QUEUE SYSTEM
-                LineList.Clear();
-                LineList.Add(LineTwo);
-                LineList.Add(LineThree);
-                LineList.Add(LineOne);
-
-                // MOVE DUDES
-                for (int i = 0; i < DudeList.Count; i++)
+                if (PlayerNew.buttonHighFive || PlayerNew.buttonFakeOut || PlayerNew.ignore)
                 {
-                    // COMPARE DudeList WITH LineList
-                    DudeList[i].transform.position = LineList[i].transform.position;  
+                    if (PlayerNew.cooldown)
+                    {
+                        LineList.Clear();
+                        LineList.Add(LineTwo);
+                        LineList.Add(LineThree);
+                        LineList.Add(LineOne);
+
+                        // MOVE DUDES
+                        for (int i = 0; i < DudeList.Count; i++)
+                        {
+                            // COMPARE DudeList WITH LineList
+                            DudeList[i].transform.position = LineList[i].transform.position;
+                        }
+                        isToughGuy = false;
+                    }
                 }
-                //linePosition++;
-                isToughGuy = false;
             }
+        }
+
+
     }
 
     void Update()
