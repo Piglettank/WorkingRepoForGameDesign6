@@ -7,6 +7,8 @@ public class PlayerNew : MonoBehaviour
     public GameObject[] dots = new GameObject[3];
 
     public static string reaction;
+    public static bool newDude;
+
 
     private float currentTime = 0;
     static float compareTime = 0;
@@ -17,7 +19,6 @@ public class PlayerNew : MonoBehaviour
     private int dotCount;
     private int toggle = 0;
 
-    private bool newDude;
     private bool reacted;
     private bool wait;
     private bool invoke;
