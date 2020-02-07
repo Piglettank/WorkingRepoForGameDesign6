@@ -36,8 +36,6 @@ public class Dudes : MonoBehaviour
     void MoveLine()
     {
         // WHEN COOLDOWN BOOL IS TRUE INSTEAD OF SPACE
-        if (PlayerNew.iLoveJoakim)
-        {
             Debug.Log("Hello");
             // LINEPOSITION CANNOT BE MORE THAN 3
             if (linePosition == 3)
@@ -129,12 +127,10 @@ public class Dudes : MonoBehaviour
                 //linePosition++;
                 isToughGuy = false;
             }
-        }
     }
 
     void Update()
     {
         MoveLine();
-        Debug.Log("iLoveJoakim = " + PlayerNew.iLoveJoakim);
     }
 }

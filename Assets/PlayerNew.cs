@@ -11,7 +11,6 @@ public class PlayerNew : MonoBehaviour
     public static bool buttonHighFive = false;
     public static bool buttonFakeOut = false;
     public static bool ignore = false;
-    public static bool iLoveJoakim = false;
     public static bool cooldown = false;
 
 
@@ -20,11 +19,11 @@ public class PlayerNew : MonoBehaviour
 
     private float compareTimeW = 0;
     private float compareTimeW2 = 0;
+    private float compareTimeW3 = 0;
 
     private int dotCount;
     private int toggle = 0;
 
-    private bool reacted;
     private bool wait;
     private bool invoke;
     private bool remove;
@@ -44,9 +43,9 @@ public class PlayerNew : MonoBehaviour
         wait = false;
         toggle = 1;
         compareTimeW = Time.time + 1;
-        compareTimeW2 = Time.time + 3;
+        compareTimeW2 = compareTimeW + 3;
+        compareTimeW3 = Time.time;
         buttonHighFive = true;
-        iLoveJoakim = true;
     }
 
 
@@ -58,8 +57,7 @@ public class PlayerNew : MonoBehaviour
         wait = false;
         toggle = 2;
         compareTimeW = Time.time + 1;
-        compareTimeW2 = Time.time + 3;
-        iLoveJoakim = true;
+        compareTimeW2 = compareTimeW + 3;
     }
 
 
@@ -68,7 +66,6 @@ public class PlayerNew : MonoBehaviour
     public void SetReactionHF()
     {
         reaction = "High Five";
-        reacted = true;
         Debug.Log("REACTED: " + reaction);
     }
 
@@ -77,7 +74,6 @@ public class PlayerNew : MonoBehaviour
     public void SetReactionFO()
     {
         reaction = "Fake Out";
-        reacted = true;
         Debug.Log("REACTED: " + reaction);
     }
 
@@ -88,6 +84,8 @@ public class PlayerNew : MonoBehaviour
     {
         newDude = true;
         remove = true;
+        
+        cooldown = false;
     }
 
 
@@ -141,9 +139,8 @@ public class PlayerNew : MonoBehaviour
             {
                 NewDudeSetup();
                 toggle = 0;
-                iLoveJoakim = false;
+                cooldown = true;
             }
-            cooldown = true;
         }
 
 
@@ -153,7 +150,6 @@ public class PlayerNew : MonoBehaviour
             Resett();           //REMOVE EXISITING DOTS
             newDude = false;    //JUST 1 MORE DUDE
             wait = true;        //WAITING STARS
-            reacted = false;    //NO REACTION FOR THE NEW DUDE
             invoke = true;      //YES, ADD NEW DOTS
             remove = false;     //NO, WE'RE NOT REMOVING EXISTING DOTS
             dotCount = -1;      //RESET THE dotCount
@@ -190,7 +186,6 @@ public class PlayerNew : MonoBehaviour
                 compareTimeW = Time.time + 1;
                 compareTimeW2 = Time.time + 3;
                 ignore = true;
-                iLoveJoakim = true; 
                 Debug.Log("REACTED: " + reaction);
 
                 // DOTS RESET
