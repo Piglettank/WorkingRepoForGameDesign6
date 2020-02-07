@@ -19,19 +19,22 @@ public class ShyGuy : MonoBehaviour
             // NEUTRAL STATE
             if (trust == 0)
             {
-                if (PlayerNew.reaction == "HighFive")
+                // PLAYER PRESS HIGH FIVE BUTTON
+                if (PlayerNew.buttonHighFive)
                 {
                     DudeHand.isIgnore = true;
                     trust = trust + 1;
                     // PLAY SFX
                 }
-                if (PlayerNew.reaction == "FakeOut")
+                // PLAYER PRESS FAKE OUT BUTTON
+                if (PlayerNew.buttonFakeOut)
                 {
                     DudeHand.isIgnore = true;
                     Debug.Log("neutral face");
                     // PLAY SFX
                 }
-                if (PlayerNew.reaction == "Ignored")
+                // PLAYER IGNORES
+                if (PlayerNew.ignore)
                 {
                     DudeHand.isIgnore = true;
                     trust = trust - 1;
@@ -42,17 +45,20 @@ public class ShyGuy : MonoBehaviour
             // HAPPY STATE
             else if (trust == 1)
             {
-                if (PlayerNew.reaction == "HighFive")
+                // PLAYER PRESS HIGH FIVE BUTTON
+                if (PlayerNew.buttonHighFive)
                 {
                     DudeHand.isHighFive = true;
                     // PLAY SFX
                 }
-                if (PlayerNew.reaction == "FakeOut")
+                // PLAYER PRESS FAKE OUT BUTTON
+                if (PlayerNew.buttonFakeOut)
                 {
                     DudeHand.isHighFive = true;
                     // PLAY SFX
                 }
-                if (PlayerNew.reaction == "Ignored")
+                // PLAYER IGNORES
+                if (PlayerNew.ignore)
                 {
                     DudeHand.isHighFive = true;
                     trust = trust - 2;
@@ -63,18 +69,21 @@ public class ShyGuy : MonoBehaviour
             // SAD STATE
             else
             {
-                if (PlayerNew.reaction == "HighFive")
+                // PLAYER PRESS HIGH FIVE BUTTON
+                if (PlayerNew.buttonHighFive)
                 {
                     DudeHand.isIgnore = true;
                     trust = 0;
                     // PLAY SFX
                 }
-                if (PlayerNew.reaction == "FakeOut")
+                // PLAYER PRESS FAKE OUT BUTTON
+                if (PlayerNew.buttonFakeOut)
                 {
                     DudeHand.isIgnore = true;
                     // PLAY SFX
                 }
-                if (PlayerNew.reaction == "Ignored")
+                // PLAYER IGNORES
+                if (PlayerNew.ignore)
                 {
                     DudeHand.isIgnore = true;
                     // PLAY SFX

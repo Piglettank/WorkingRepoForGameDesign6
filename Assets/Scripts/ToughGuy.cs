@@ -19,18 +19,21 @@ public class ToughGuy : MonoBehaviour
             // NEUTRAL STATE
             if (trust == 0)
             {
-                if (PlayerNew.reaction == "HighFive")
+                // PLAYER PRESS HIGH FIVE BUTTON
+                if (PlayerNew.buttonHighFive)
                 {
                     DudeHand.isFakeOut = true;
                     trust = trust + 1;
                     // PLAY SFX
                 }
-                if (PlayerNew.reaction == "FakeOut")
+                // PLAYER PRESS FAKE OUT BUTTON
+                if (PlayerNew.buttonFakeOut)
                 {
                     DudeHand.isFakeOut = true;
                     // PLAY SFX
                 }
-                if (PlayerNew.reaction == "Ignored")
+                // PLAYER IGNORES
+                if (PlayerNew.ignore)
                 {
                     DudeHand.isFakeOut = true;
                     // PLAY SFX
@@ -40,17 +43,20 @@ public class ToughGuy : MonoBehaviour
             // HAPPY STATE
             else if (trust == 1)
             {
-                if (PlayerNew.reaction == "HighFive")
+                // PLAYER PRESS HIGH FIVE BUTTON
+                if (PlayerNew.buttonHighFive)
                 {
                     DudeHand.isFakeOut = true;
                     // PLAY SFX
                 }
-                if (PlayerNew.reaction == "FakeOut")
+                // PLAYER PRESS FAKE OUT BUTTON
+                if (PlayerNew.buttonFakeOut)
                 {
                     DudeHand.isFakeOut = true;
                     // PLAY SFX
                 }
-                if (PlayerNew.reaction == "Ignored")
+                // PLAYER IGNORES
+                if (PlayerNew.ignore)
                 {
                     DudeHand.isFakeOut = true;
                     trust = trust - 2;
@@ -61,18 +67,21 @@ public class ToughGuy : MonoBehaviour
             // SAD STATE
             else
             {
-                if (PlayerNew.reaction == "HighFive")
+                // PLAYER PRESS HIGH FIVE BUTTON
+                if (PlayerNew.buttonHighFive)
                 {
                     DudeHand.isHighFive = true;
                     trust = trust + 2;
                     // PLAY SFX
                 }
-                if (PlayerNew.reaction == "FakeOut")
+                // PLAYER PRESS FAKE OUT BUTTON
+                if (PlayerNew.buttonFakeOut)
                 {
                     DudeHand.isIgnore = true;
                     // PLAY SFX
                 }
-                if (PlayerNew.reaction == "Ignored")
+                // PLAYER IGNORES
+                if (PlayerNew.ignore)
                 {
                     DudeHand.isIgnore = true;
                     // PLAY SFX
