@@ -30,7 +30,6 @@ public class ShyGuy : MonoBehaviour
                 if (PlayerNew.buttonFakeOut)
                 {
                     DudeHand.isIgnore = true;
-                    Debug.Log("neutral face");
                     // PLAY SFX
                 }
                 // PLAYER IGNORES
