@@ -24,6 +24,7 @@ public class PlayerNew : MonoBehaviour
     private int dotCount;
     private int toggle = 0;
 
+    private bool reacted = false;
     private bool wait;
     private bool invoke;
     private bool remove;
@@ -40,11 +41,13 @@ public class PlayerNew : MonoBehaviour
     //ACTIVATED BY THE HIGH_FIVE BUTTON
     public void ToggleHighFive()
     {
+        reacted = true;
         wait = false;
         toggle = 1;
         compareTimeW = Time.time + 1;
         compareTimeW2 = compareTimeW + 3;
-        compareTimeW3 = Time.time;
+        compareTimeW3 = Time.time + 4;
+
         buttonHighFive = true;
     }
 
@@ -53,11 +56,14 @@ public class PlayerNew : MonoBehaviour
     //ACTIVATED BY THE FAKE_OUT BUTTON
     public void ToggleFakeOut()
     {
+        reacted = true;
         buttonFakeOut = true;
         wait = false;
         toggle = 2;
         compareTimeW = Time.time + 1;
         compareTimeW2 = compareTimeW + 3;
+        compareTimeW3 = compareTimeW2 + 4;
+
     }
 
 
@@ -84,7 +90,8 @@ public class PlayerNew : MonoBehaviour
     {
         newDude = true;
         remove = true;
-        
+
+        reacted = false;
         cooldown = false;
     }
 
@@ -94,6 +101,8 @@ public class PlayerNew : MonoBehaviour
     public void Resett()
     {
         CancelInvoke();
+        compareTime = Time.time + 4.5f; //NEW TIMESTAMP FOR THE 'IGNORED' REACTION 
+        compareTimeW3 = Time.time + 4.5f;
 
         for (int b = 0; b <= 2; ++b)
         {
@@ -118,30 +127,49 @@ public class PlayerNew : MonoBehaviour
         Time.timeScale = 1f;
         currentTime = Time.time;
         compareTime = 0;
+        compareTimeW3 = Time.time + 4;
     }
 
 
     // FIXED UPDATE
     void FixedUpdate()
     {
+        Debug.Log(wait);
         //UPDATE WAITING TIME 
         currentTime = Time.time;
 
-        if (toggle == 1 || toggle == 2 || toggle == 3)
+        if (toggle == 1 || toggle == 2)
         {
             if (Time.time >= compareTimeW)
             {
                 if (toggle == 1) SetReactionHF();
                 if (toggle == 2) SetReactionFO();
-            }
 
-            if (Time.time >= compareTimeW2)
-            {
-                NewDudeSetup();
-                toggle = 0;
-                cooldown = true;
+                if (Time.time >= compareTimeW2)
+                {
+                    NewDudeSetup();
+                    cooldown = true;
+                    toggle = 0;
+                }
             }
         }
+
+        if (!reacted)
+        {
+            if (toggle == 3)
+            {
+                if (Time.time >= compareTimeW)
+                {
+                    if (Time.time >= compareTimeW2)
+                    {
+                        NewDudeSetup();
+                        toggle = 0;
+                        cooldown = true;
+                    }
+                }
+            }
+        }
+        
 
 
         //MAKE A NEW DUDE 
@@ -154,7 +182,7 @@ public class PlayerNew : MonoBehaviour
             remove = false;     //NO, WE'RE NOT REMOVING EXISTING DOTS
             dotCount = -1;      //RESET THE dotCount
 
-            compareTime = Time.time + 4.5f; //NEW TIMESTAMP FOR THE 'IGNORED' REACTION 
+            
         }
 
 
@@ -178,13 +206,13 @@ public class PlayerNew : MonoBehaviour
             }
 
             //CHECK FOR IGNORED REACTION
-            if (currentTime >= compareTime)
+            if (Time.time > compareTimeW3)
             {
                 currentTime = Time.time;
                 reaction = "Ignored";
                 toggle = 3;
                 compareTimeW = Time.time + 1;
-                compareTimeW2 = Time.time + 3;
+                compareTimeW2 = compareTimeW + 3;
                 ignore = true;
                 Debug.Log("REACTED: " + reaction);
 
@@ -195,12 +223,6 @@ public class PlayerNew : MonoBehaviour
 
                 return;
             }
-
-            //IF NOT WAITING, RESET
-        }
-        else if (wait == false)
-        {
-            Resett();
         }
     }
 }
