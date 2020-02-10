@@ -25,7 +25,7 @@ public class PlayerNew : MonoBehaviour
     private int toggle = 0;
 
     private bool reacted = false;
-    private bool waitingForInput;
+    private bool wait;
     private bool invoke;
     private bool remove;
 
@@ -42,7 +42,7 @@ public class PlayerNew : MonoBehaviour
     public void ToggleHighFive()
     {
         reacted = true;
-        waitingForInput = false;
+        wait = false;
         toggle = 1;
         compareTimeW = Time.time + 1;
         compareTimeW2 = compareTimeW + 3;
@@ -57,13 +57,13 @@ public class PlayerNew : MonoBehaviour
     public void ToggleFakeOut()
     {
         reacted = true;
-        waitingForInput = false;
+        buttonFakeOut = true;
+        wait = false;
         toggle = 2;
         compareTimeW = Time.time + 1;
         compareTimeW2 = compareTimeW + 3;
         compareTimeW3 = compareTimeW2 + 4;
 
-        buttonFakeOut = true;
     }
 
 
@@ -91,7 +91,6 @@ public class PlayerNew : MonoBehaviour
         newDude = true;
         remove = true;
 
-        waitingForInput = true;        //WAITING STARTS
         reacted = false;
         cooldown = false;
     }
@@ -102,6 +101,8 @@ public class PlayerNew : MonoBehaviour
     public void Resett()
     {
         CancelInvoke();
+        compareTime = Time.time + 4.5f; //NEW TIMESTAMP FOR THE 'IGNORED' REACTION 
+        compareTimeW3 = Time.time + 4.5f;
 
         for (int b = 0; b <= 2; ++b)
         {
@@ -115,7 +116,7 @@ public class PlayerNew : MonoBehaviour
     {
         //MAKE A DUDE
         newDude = true;
-        waitingForInput = true;
+        wait = false;
 
         //DOTS SET UP
         invoke = true;
@@ -133,10 +134,9 @@ public class PlayerNew : MonoBehaviour
     // FIXED UPDATE
     void FixedUpdate()
     {
-        Debug.Log(waitingForInput);
+        Debug.Log(wait);
         //UPDATE WAITING TIME 
         currentTime = Time.time;
-
 
         if (toggle == 1 || toggle == 2)
         {
@@ -144,35 +144,31 @@ public class PlayerNew : MonoBehaviour
             {
                 if (toggle == 1) SetReactionHF();
                 if (toggle == 2) SetReactionFO();
-            }
-            if (Time.time >= compareTimeW2)
-            {
-                NewDudeSetup();
-                toggle = 0;
-                cooldown = true;
-                compareTimeW3 = Time.time + 4.5f; //NEW TIMESTAMP FOR THE 'IGNORED' REACTION
-            }
-        }
 
-
-            if (waitingForInput)
-            {
-                if (toggle == 3)
+                if (Time.time >= compareTimeW2)
                 {
-                    if (Time.time >= compareTimeW)
-                    {
-                        if (Time.time >= compareTimeW2)
-                        {
-                            NewDudeSetup();
-                            toggle = 0;
-                            cooldown = true;
-                            compareTimeW3 = Time.time + 4.5f; //NEW TIMESTAMP FOR THE 'IGNORED' REACTION
-                        }
-                    }
-             }
+                    NewDudeSetup();
+                    cooldown = true;
+                    toggle = 0;
+                }
+            }
         }
 
-             
+        if (!reacted)
+        {
+            if (toggle == 3)
+            {
+                if (Time.time >= compareTimeW)
+                {
+                    if (Time.time >= compareTimeW2)
+                    {
+                        NewDudeSetup();
+                        toggle = 0;
+                        cooldown = true;
+                    }
+                }
+            }
+        }
         
 
 
@@ -181,8 +177,9 @@ public class PlayerNew : MonoBehaviour
         {
             Resett();           //REMOVE EXISITING DOTS
             newDude = false;    //JUST 1 MORE DUDE
+            wait = true;        //WAITING STARS
             invoke = true;      //YES, ADD NEW DOTS
-            remove = false;     //NO, WE'RE NOT NO LONGER REMOVING EXISTING DOTS
+            remove = false;     //NO, WE'RE NOT REMOVING EXISTING DOTS
             dotCount = -1;      //RESET THE dotCount
 
             
@@ -190,7 +187,7 @@ public class PlayerNew : MonoBehaviour
 
 
         //ADD 1 DOT PER SECOND
-        if (waitingForInput == true)
+        if (wait == true)
         {
             // CHECK IF dotCount IS WITHIN ARRAY INDEX
             if (dotCount >= 0 && dotCount <= 2)
@@ -220,7 +217,7 @@ public class PlayerNew : MonoBehaviour
                 Debug.Log("REACTED: " + reaction);
 
                 // DOTS RESET
-                waitingForInput = false;
+                wait = false;
                 remove = true;
                 Resett();
 
