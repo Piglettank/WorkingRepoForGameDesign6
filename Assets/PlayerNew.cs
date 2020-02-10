@@ -24,12 +24,8 @@ public class PlayerNew : MonoBehaviour
     private int dotCount;
     private int toggle = 0;
 
-<<<<<<< HEAD
     private bool reacted = false;
     private bool waitingForInput;
-=======
-    private bool wait;
->>>>>>> parent of 12a6730... Some changes to the PlayerNew script but still buggy
     private bool invoke;
     private bool remove;
 
@@ -45,16 +41,13 @@ public class PlayerNew : MonoBehaviour
     //ACTIVATED BY THE HIGH_FIVE BUTTON
     public void ToggleHighFive()
     {
-<<<<<<< HEAD
         reacted = true;
         waitingForInput = false;
-=======
-        wait = false;
->>>>>>> parent of 12a6730... Some changes to the PlayerNew script but still buggy
         toggle = 1;
         compareTimeW = Time.time + 1;
         compareTimeW2 = compareTimeW + 3;
-        compareTimeW3 = Time.time;
+        compareTimeW3 = Time.time + 4;
+
         buttonHighFive = true;
     }
 
@@ -63,7 +56,6 @@ public class PlayerNew : MonoBehaviour
     //ACTIVATED BY THE FAKE_OUT BUTTON
     public void ToggleFakeOut()
     {
-<<<<<<< HEAD
         reacted = true;
         waitingForInput = false;
         toggle = 2;
@@ -72,13 +64,6 @@ public class PlayerNew : MonoBehaviour
         compareTimeW3 = compareTimeW2 + 4;
 
         buttonFakeOut = true;
-=======
-        buttonFakeOut = true;
-        wait = false;
-        toggle = 2;
-        compareTimeW = Time.time + 1;
-        compareTimeW2 = compareTimeW + 3;
->>>>>>> parent of 12a6730... Some changes to the PlayerNew script but still buggy
     }
 
 
@@ -105,13 +90,9 @@ public class PlayerNew : MonoBehaviour
     {
         newDude = true;
         remove = true;
-<<<<<<< HEAD
 
         waitingForInput = true;        //WAITING STARTS
         reacted = false;
-=======
-        
->>>>>>> parent of 12a6730... Some changes to the PlayerNew script but still buggy
         cooldown = false;
     }
 
@@ -145,31 +126,24 @@ public class PlayerNew : MonoBehaviour
         Time.timeScale = 1f;
         currentTime = Time.time;
         compareTime = 0;
+        compareTimeW3 = Time.time + 4;
     }
 
 
     // FIXED UPDATE
     void FixedUpdate()
     {
-<<<<<<< HEAD
         Debug.Log(waitingForInput);
         //UPDATE WAITING TIME 
         currentTime = Time.time;
 
 
         if (toggle == 1 || toggle == 2)
-=======
-        //UPDATE WAITING TIME 
-        currentTime = Time.time;
-
-        if (toggle == 1 || toggle == 2 || toggle == 3)
->>>>>>> parent of 12a6730... Some changes to the PlayerNew script but still buggy
         {
             if (Time.time >= compareTimeW)
             {
                 if (toggle == 1) SetReactionHF();
                 if (toggle == 2) SetReactionFO();
-<<<<<<< HEAD
             }
             if (Time.time >= compareTimeW2)
             {
@@ -177,11 +151,9 @@ public class PlayerNew : MonoBehaviour
                 toggle = 0;
                 cooldown = true;
                 compareTimeW3 = Time.time + 4.5f; //NEW TIMESTAMP FOR THE 'IGNORED' REACTION
-=======
->>>>>>> parent of 12a6730... Some changes to the PlayerNew script but still buggy
             }
+        }
 
-<<<<<<< HEAD
 
             if (waitingForInput)
             {
@@ -202,15 +174,6 @@ public class PlayerNew : MonoBehaviour
 
              
         
-=======
-            if (Time.time >= compareTimeW2)
-            {
-                NewDudeSetup();
-                toggle = 0;
-                cooldown = true;
-            }
-        }
->>>>>>> parent of 12a6730... Some changes to the PlayerNew script but still buggy
 
 
         //MAKE A NEW DUDE 
@@ -222,7 +185,7 @@ public class PlayerNew : MonoBehaviour
             remove = false;     //NO, WE'RE NOT NO LONGER REMOVING EXISTING DOTS
             dotCount = -1;      //RESET THE dotCount
 
-            compareTime = Time.time + 4.5f; //NEW TIMESTAMP FOR THE 'IGNORED' REACTION 
+            
         }
 
 
@@ -246,13 +209,13 @@ public class PlayerNew : MonoBehaviour
             }
 
             //CHECK FOR IGNORED REACTION
-            if (currentTime >= compareTime)
+            if (Time.time > compareTimeW3)
             {
                 currentTime = Time.time;
                 reaction = "Ignored";
                 toggle = 3;
                 compareTimeW = Time.time + 1;
-                compareTimeW2 = Time.time + 3;
+                compareTimeW2 = compareTimeW + 3;
                 ignore = true;
                 Debug.Log("REACTED: " + reaction);
 
@@ -263,12 +226,6 @@ public class PlayerNew : MonoBehaviour
 
                 return;
             }
-
-            //IF NOT WAITING, RESET
-        }
-        else if (wait == false)
-        {
-            Resett();
         }
     }
 }
