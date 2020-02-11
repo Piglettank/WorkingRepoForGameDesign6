@@ -12,7 +12,7 @@ public class HighFiveGuy : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    void TrustCalculator()
+    public void TrustCalculator()
     {
         if (Dudes.isHighFiveGuy)
         {
@@ -23,6 +23,7 @@ public class HighFiveGuy : MonoBehaviour
                 if (PlayerNew.buttonHighFive)
                 {
                     DudeHand.isHighFive = true;
+                    Debug.Log(DudeHand.isHighFive + "isHighFive Button Press");
                     trust = trust + 1;
                     // PLAY SFX
 

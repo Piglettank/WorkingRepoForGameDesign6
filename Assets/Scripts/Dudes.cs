@@ -48,13 +48,14 @@ public class Dudes : MonoBehaviour
 
             if (PlayerNew.buttonHighFive || PlayerNew.buttonFakeOut || PlayerNew.ignore)
             {
-                PlayerNew.buttonHighFive = false;
-                PlayerNew.buttonFakeOut = false;
-                PlayerNew.ignore = false;
-
                 if (PlayerNew.cooldown)
                 // UPDATE QUEUE SYSTEM
                 {
+                    Debug.Log("do we even");
+                    PlayerNew.buttonHighFive = false;
+                    PlayerNew.buttonFakeOut = false;
+                    PlayerNew.ignore = false;
+
                     LineList.Clear();
                     LineList.Add(LineThree);
                     LineList.Add(LineOne);
@@ -81,12 +82,12 @@ public class Dudes : MonoBehaviour
 
             if (PlayerNew.buttonHighFive || PlayerNew.buttonFakeOut || PlayerNew.ignore)
             {
-                PlayerNew.buttonHighFive = false;
-                PlayerNew.buttonFakeOut = false;
-                PlayerNew.ignore = false;
-
                 if (PlayerNew.cooldown)
                 {
+                    PlayerNew.buttonHighFive = false;
+                    PlayerNew.buttonFakeOut = false;
+                    PlayerNew.ignore = false;
+
                     LineList.Clear();
                     LineList.Add(LineTwo);
                     LineList.Add(LineThree);
@@ -113,12 +114,12 @@ public class Dudes : MonoBehaviour
 
             if (PlayerNew.buttonHighFive || PlayerNew.buttonFakeOut || PlayerNew.ignore)
             {
-                PlayerNew.buttonHighFive = false;
-                PlayerNew.buttonFakeOut = false;
-                PlayerNew.ignore = false;
-
                 if (PlayerNew.cooldown)
                 {
+                    PlayerNew.buttonHighFive = false;
+                    PlayerNew.buttonFakeOut = false;
+                    PlayerNew.ignore = false;
+
                     LineList.Clear();
                     LineList.Add(LineOne);
                     LineList.Add(LineTwo);
