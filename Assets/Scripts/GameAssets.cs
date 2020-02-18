@@ -12,21 +12,22 @@ public class GameAssets : MonoBehaviour
         get
         {
             if (_i == null) _i = Instantiate(Resources.Load<GameAssets>("GameAssets"));
-            return _i; 
+            return _i;
         }
     }
 
     //LIST OF ASSETS
-    public SoundAudioClip[] soundAudioClipArray; 
+    public SoundAudioClip[] soundAudioClipArray;
 
 
     [System.Serializable]
     public class SoundAudioClip
     {
         public SoundManager.Sound sound;
-        public AudioClip audioClip; 
+        public AudioClip audioClip;
 
     }
 
 
 }
+
