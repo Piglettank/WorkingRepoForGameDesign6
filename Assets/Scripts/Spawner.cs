@@ -16,11 +16,15 @@ public class Spawner : MonoBehaviour
 
     void Spawn()
     {
+        // IF THERE'S LESS THAN 1 BANANA
         if (Banana.bananaCount < 1)
         {
+            // CHECK prefabsToSpawn TO SEE WHICH TO SPAWN
             for (int i = 0; i < prefabsToSpawn.Length; i++)
             {
+                // SPAWNING BANANA PREFAB
                 prefabsToClone[i] = Instantiate(prefabsToSpawn[i], spawnerLocations[i].transform.position, Quaternion.Euler(0, 0, 90)) as GameObject;
+                // bananaCount SET TO 1
                 Banana.bananaCount = 1;
             }
         }
