@@ -8,13 +8,13 @@ public class Banana : MonoBehaviour
 
     void Start()
     {
-
+        bananaCount = 1;
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collider)
     {
         // WHEN BANANA COLLIDES WITH MOUTH
-        if (collision.gameObject.tag == "Mouth")
+        if (collider.gameObject.tag == "Mouth")
         {
             // DESTROYS THE GAMEOBJECT
             Debug.Log("Banana Eaten");
