@@ -11,6 +11,14 @@ public class Banana : MonoBehaviour
         bananaCount = 1;
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Wall")
+        {
+            Debug.Log("Bounce");
+        }
+    }
+
     void OnTriggerEnter(Collider collider)
     {
         // WHEN BANANA COLLIDES WITH MOUTH
