@@ -1149,7 +1149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 250e759705cf6b2479dcb102988bfffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  torque: 40
   force: 2400
 --- !u!145 &1113471544
 SpringJoint:
@@ -1231,7 +1230,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 250e759705cf6b2479dcb102988bfffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  torque: 20
   force: 2400
 --- !u!145 &1113471549
 SpringJoint:
@@ -1297,7 +1295,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 250e759705cf6b2479dcb102988bfffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  torque: 20
   force: 2400
 --- !u!145 &1113471553
 SpringJoint:
@@ -1363,7 +1360,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 250e759705cf6b2479dcb102988bfffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  torque: 20
   force: 2100
 --- !u!145 &1113471557
 SpringJoint:
@@ -1429,7 +1425,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 250e759705cf6b2479dcb102988bfffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  torque: 20
   force: 2100
 --- !u!145 &1113471561
 SpringJoint:
@@ -1495,7 +1490,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 250e759705cf6b2479dcb102988bfffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  torque: 20
   force: 2100
 --- !u!145 &1113471565
 SpringJoint:
@@ -1561,7 +1555,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 250e759705cf6b2479dcb102988bfffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  torque: 20
   force: 2100
 --- !u!145 &1113471569
 SpringJoint:
