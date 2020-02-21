@@ -38,8 +38,8 @@ public class TrunkMovement : MonoBehaviour
         float horizontal = Input.GetAxis("Mouse X") * force;
         float vertical = Input.GetAxis("Mouse Y") * force;
 
-        rb.AddForce(0, 0f, -horizontal);
-        rb.AddForce(vertical, 0f, 0f);        
+        rb.AddForce(horizontal, 0f, 0f);
+        rb.AddForce(0f, vertical, 0f);        
     }
 
     void FixedUpdate()

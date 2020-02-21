@@ -8,7 +8,6 @@ public class Spawner : MonoBehaviour
     public GameObject[] prefabsToSpawn;
     private GameObject[] prefabsToClone;
 
-
     void Start()
     {
         prefabsToClone = new GameObject[prefabsToSpawn.Length];
@@ -23,7 +22,7 @@ public class Spawner : MonoBehaviour
             for (int i = 0; i < prefabsToSpawn.Length; i++)
             {
                 // SPAWNING BANANA PREFAB
-                prefabsToClone[i] = Instantiate(prefabsToSpawn[i], spawnerLocations[i].transform.position, Quaternion.Euler(0, 0, 90)) as GameObject;
+                prefabsToClone[i] = Instantiate(prefabsToSpawn[i], spawnerLocations[i].transform.position, Quaternion.Euler(0, 0, -90)) as GameObject;
                 // bananaCount SET TO 1
                 Banana.bananaCount = 1;
             }
