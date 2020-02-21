@@ -22,7 +22,8 @@ public static class SoundManager
         yeah0,
         hit0,
         tadaa0,
-        hihat0
+        hihat0,
+        eating0
     }
 
     private static GameObject soundGameObject;
@@ -39,8 +40,9 @@ public static class SoundManager
         }
 
         // PLAY THE EXACT SOUND
-        audioSource.PlayOneShot(GetAudioClip(sound));
+            audioSource.PlayOneShot(GetAudioClip(sound));
     }
+
 
     private static AudioClip GetAudioClip(Sound sound)
     {
