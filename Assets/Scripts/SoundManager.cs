@@ -19,7 +19,10 @@ public static class SoundManager
         bananaBounce10,
         bananaBounce11,
         bananaBounce12,
-        slap,
+        yeah0,
+        hit0,
+        tadaa0,
+        hihat0
     }
 
     private static GameObject soundGameObject;
