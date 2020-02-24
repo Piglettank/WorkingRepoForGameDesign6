@@ -25,6 +25,7 @@ public class Spawner : MonoBehaviour
                 prefabsToClone[i] = Instantiate(prefabsToSpawn[i], spawnerLocations[i].transform.position, Quaternion.Euler(0, 0, -90)) as GameObject;
                 // bananaCount SET TO 1
                 Banana.bananaCount = 1;
+                Banana.isBananaEaten = false;
             }
         }
     }

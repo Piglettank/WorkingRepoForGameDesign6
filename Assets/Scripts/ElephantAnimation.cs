@@ -16,6 +16,7 @@ public class ElephantAnimation : MonoBehaviour
         if (Banana.isBananaEaten)
         {
             // PLAY ANIMATION
+            animator.Play("nomnom");
         }
     }
 
