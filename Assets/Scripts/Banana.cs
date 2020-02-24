@@ -5,6 +5,8 @@ using UnityEngine;
 public class Banana : MonoBehaviour
 {
     public static int bananaCount = 0;
+    public static bool isBananaEaten = false;
+
     public int soundCount = 0;
     private SoundManager.Sound[] bananaCountArray = new SoundManager.Sound[13];
 
@@ -60,8 +62,12 @@ public class Banana : MonoBehaviour
         // WHEN BANANA COLLIDES WITH MOUTH
         if (collider.gameObject.tag == "Mouth")
         {
+            // STATIC BOOL FOR EATING BANANA ANIMATION
+            isBananaEaten = true;
+
             SoundManager.PlaySound(SoundManager.Sound.eating0);
-            SoundManager.PlaySound(SoundManager.Sound.yeah0); 
+            SoundManager.PlaySound(SoundManager.Sound.yeah0);
+
             Destroy(gameObject);
             bananaCount--;
         }
