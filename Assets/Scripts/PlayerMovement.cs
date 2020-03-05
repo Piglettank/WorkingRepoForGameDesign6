@@ -12,8 +12,6 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed;
     public float rotationSpeed;
 
-    private Vector3 target;
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -22,36 +20,34 @@ public class PlayerMovement : MonoBehaviour
 
     void Movement()
     {
-        // GOING RIGHT
-        if (Input.GetKey(KeyCode.RightArrow))
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
+
+        Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical);
+
+        rb.velocity = movement * moveSpeed;
+
+        // ROTATION
+        // ROTATES CLOCKWISE (RIGHT)
+        if (moveHorizontal > 0)
         {
-            rb.velocity = new Vector3(moveSpeed, 0, 0);
-            //rb.AddForce(transform.right * moveSpeed);
-            //rb.AddTorque(transform.right * rotationSpeed);
-            // Spin the object around the world origin at 20 degrees/second.
-            transformChildren.RotateAround(circle.transform.position, Vector3.forward, 100 * Time.deltaTime);
+            transformChildren.RotateAround(circle.transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
         }
-        // GOING LEFT
-        if (Input.GetKey(KeyCode.LeftArrow))
+        // ROTATES COUNTER-CLOCKWISE (LEFT)
+        if (moveHorizontal < 0)
         {
-            rb.velocity = new Vector3(-moveSpeed, 0, 0);
-            //rb.AddForce(-transform.right * moveSpeed);
-            //rb.AddTorque(-transform.right * rotationSpeed);
-            transformChildren.RotateAround(circle.transform.position, -Vector3.forward, 100 * Time.deltaTime);
+            transformChildren.RotateAround(circle.transform.position, -Vector3.up, rotationSpeed * Time.deltaTime);
         }
-        // GOING UP
-        if (Input.GetKey(KeyCode.UpArrow))
+
+        // ROTATES CLOCKWISE (UP)
+        if (moveVertical > 0)
         {
-            rb.velocity = new Vector3(0, 0, moveSpeed);
-            //rb.AddForce(transform.forward * moveSpeed);
-            //rb.AddTorque(transform.forward * rotationSpeed);
+            transformChildren.RotateAround(circle.transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
         }
-        // GOING DOWN
-        if (Input.GetKey(KeyCode.DownArrow))
+        // ROTATES COUNTER-CLOCKWISE (DOWN)
+        if (moveVertical < 0)
         {
-            rb.velocity = new Vector3(0, 0, -moveSpeed);
-            //rb.AddForce(-transform.forward * moveSpeed);
-            //rb.AddTorque(-transform.forward * rotationSpeed);
+            transformChildren.RotateAround(circle.transform.position, -Vector3.up, rotationSpeed * Time.deltaTime);
         }
     }
 
