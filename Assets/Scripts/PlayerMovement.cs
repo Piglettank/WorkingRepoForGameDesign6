@@ -15,16 +15,19 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
         transformChildren = GetComponentInChildren<Transform>();
     }
 
     void Movement()
     {
+        // MOVEMENT
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
         Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical);
 
+        // MOVE AXIS * MOVE SPEED
         rb.velocity = movement * moveSpeed;
 
         // ROTATION
