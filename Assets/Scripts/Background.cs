@@ -5,7 +5,7 @@ using UnityEngine;
 public class Background : MonoBehaviour
 {
     public float scrollSpeed = -5f;
-    Vector2 startPos;
+    Vector3 startPos;
 
     void Start()
     {
@@ -15,6 +15,6 @@ public class Background : MonoBehaviour
     void Update()
     {
         float newPos = Mathf.Repeat(Time.time * scrollSpeed, 81.92f);
-        transform.position = startPos + Vector2.up * newPos;
+        transform.position = startPos + Vector3.forward * newPos;
     }
 }
