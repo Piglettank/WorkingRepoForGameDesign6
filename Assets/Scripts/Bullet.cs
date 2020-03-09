@@ -4,12 +4,23 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    private bool hasHit = false;
+
     public static float actionTimer = 0f;
     public static float actionComplete = 2f;
 
     void Start()
     {
         
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "skier")
+        {
+            hasHit = true;
+            Debug.Log("bullet hit skier");
+        }
     }
 
     void DestroyBullet()
@@ -27,6 +38,14 @@ public class Bullet : MonoBehaviour
                 // DESTROY BULLET AND RESET TIMER
                 Destroy(gameObject);
                 PlayerShooting.bulletCount--;
+
+                actionTimer = 0f;
+            }
+            else if (hasHit)
+            {
+                Destroy(gameObject);
+                PlayerShooting.bulletCount--;
+                hasHit = false;
 
                 actionTimer = 0f;
             }
