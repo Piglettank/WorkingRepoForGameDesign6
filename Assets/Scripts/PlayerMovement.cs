@@ -15,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
         transformChildren = GetComponentInChildren<Transform>();
     }
 

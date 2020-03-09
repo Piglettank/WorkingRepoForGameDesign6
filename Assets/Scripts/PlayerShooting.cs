@@ -10,6 +10,10 @@ public class PlayerShooting : MonoBehaviour
 
     public static int bulletCount = 0;
 
+    private int blueFirstPower = 2;
+    private int blueSecondPower = 4;
+    private int blueThirdPower = 6;
+
     void Start()
     {
         projectileToClone = new GameObject[projectileToSpawn.Length];
@@ -19,6 +23,18 @@ public class PlayerShooting : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && bulletCount < 1)
         {
+            //if (Bullet.bluePower < blueFirstPower)
+            //{
+            //    // SPAWNS FIRST BULLET
+            //}
+            //else if (Bullet.bluePower >= blueSecondPower && Bullet.bluePower < blueThirdPower)
+            //{
+            //    // SPAWNS SECOND BULLET
+            //}
+            //else if (Bullet.bluePower >= blueThirdPower)
+            //{
+            //    // SPAWNS THIRD BULLET
+            //}
             // SPAWNS BULLETS AND INCREMENTS bulletCount
             for (int i = 0; i < projectileToSpawn.Length; i++)
             {
