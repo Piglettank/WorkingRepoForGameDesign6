@@ -471,6 +471,7 @@ GameObject:
   - component: {fileID: 395665168}
   - component: {fileID: 395665167}
   - component: {fileID: 395665171}
+  - component: {fileID: 395665173}
   m_Layer: 0
   m_Name: PlayerCircle
   m_TagString: Untagged
@@ -587,6 +588,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &395665173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395665166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97e94fbe00bb80e499d23af05de74def, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootingPosition: {fileID: 1842407142}
+  projectileToSpawn:
+  - {fileID: 802517723431683505, guid: 162e4ffc0701e56459731b363697316e, type: 3}
 --- !u!1 &433587209
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,7 +873,6 @@ GameObject:
   - component: {fileID: 764859992}
   - component: {fileID: 764859991}
   - component: {fileID: 764859990}
-  - component: {fileID: 764859993}
   m_Layer: 0
   m_Name: PlayerCharacter_1
   m_TagString: Untagged
@@ -939,21 +954,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 764859988}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &764859993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 764859988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97e94fbe00bb80e499d23af05de74def, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootingPosition: {fileID: 1842407142}
-  projectile: {fileID: -5235946768285964310, guid: 162e4ffc0701e56459731b363697316e,
-    type: 3}
 --- !u!1 &770380379
 GameObject:
   m_ObjectHideFlags: 0
@@ -2256,7 +2256,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1842407141}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
