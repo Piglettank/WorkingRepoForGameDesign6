@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class SkiersSpawner : MonoBehaviour
 {
     public GameObject enemy;
-    private float xPos; 
+    private float xPos;
     public static int enemyCount;
     public int maxEnemies;
     private float skierTimer;
@@ -25,7 +25,7 @@ public class EnemySpawner : MonoBehaviour
 
             Instantiate(enemy, new Vector3(xPos, 1, -50), Quaternion.identity);
             enemyCount++;
-            yield return new WaitForSeconds(Random.Range(5,7 - minSpawnDelay));
+            yield return new WaitForSeconds(Random.Range(5, 7 - minSpawnDelay));
         }
     }
 

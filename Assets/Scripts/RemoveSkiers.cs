@@ -9,7 +9,7 @@ public class RemoveSkiers : MonoBehaviour
         if (collider.gameObject.tag == "skiers")
         {
             Destroy(collider.gameObject);
-            EnemySpawner.enemyCount--;
+            SkiersSpawner.enemyCount--;
         }
     }
 

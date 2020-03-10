@@ -19,7 +19,7 @@ public class SkierMovement : MonoBehaviour
 
 	Vector3 pos, localScale;
 
-	// Use this for initialization
+
 	void Start()
 	{
 
@@ -29,12 +29,10 @@ public class SkierMovement : MonoBehaviour
 
 	}
 
-	// Update is called once per frame
 	void Update()
 	{
 		MoveRight();
 	}
-
 
 	void MoveRight()
 	{
