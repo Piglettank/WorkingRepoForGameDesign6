@@ -697,6 +697,8 @@ MonoBehaviour:
   - {fileID: 954495868}
   projectileToSpawn:
   - {fileID: 802517723431683505, guid: 162e4ffc0701e56459731b363697316e, type: 3}
+  - {fileID: 802517723431683505, guid: 162e4ffc0701e56459731b363697316e, type: 3}
+  - {fileID: 802517723431683505, guid: 162e4ffc0701e56459731b363697316e, type: 3}
 --- !u!1 &433587209
 GameObject:
   m_ObjectHideFlags: 0

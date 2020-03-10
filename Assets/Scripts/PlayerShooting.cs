@@ -9,13 +9,18 @@ public class PlayerShooting : MonoBehaviour
     public Transform[] zoneThreePosition;
 
     public GameObject[] projectileToSpawn;
-    private GameObject[] projectileToClone;
+    public GameObject[] projectileToClone;
 
     public static int bulletCount = 0;
 
+    private float actionComplete = 2f;
+    private float bulletDestroyTimer = 0f;
     private float actionTimer = 0f;
-    private float zoneTwoTimer = 1.5f;
-    private float zoneThreeTimer = 3f;
+
+    public float zoneTwoTimer = 1.5f;
+    public float zoneThreeTimer = 3f;
+
+    private bool hasBullet = true;
 
     private int blueFirstPower = 2;
     private int blueSecondPower = 4;
@@ -28,72 +33,86 @@ public class PlayerShooting : MonoBehaviour
 
     void Shooting()
     {
-        
-        if (Input.GetKey(KeyCode.Space) && bulletCount < 1)
+        if (bulletCount < 1)
         {
-            actionTimer += Time.time;
-            Debug.Log(actionTimer);
+            hasBullet = true;
+        }
+        else if (bulletCount >= 1)
+        {
+            hasBullet = false;
+        }
+
+        if (hasBullet)
+        {
+            if (Input.GetKey(KeyCode.Space))
+            {
+                actionTimer += Time.deltaTime;
+                Debug.Log(actionTimer);
+            }
 
             if (Input.GetKeyUp(KeyCode.Space) && actionTimer < zoneTwoTimer)
             {
                 for (int i = 0; i < projectileToSpawn.Length; i++)
                 {
-                    projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneOnePosition[0].position, Quaternion.Euler(0, 0, 0)) as GameObject;
-                    projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneOnePosition[1].position, Quaternion.Euler(0, 0, 0)) as GameObject;
-                    projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneOnePosition[2].position, Quaternion.Euler(0, 0, 0)) as GameObject;
-                    bulletCount++;
+                    projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneOnePosition[i].position, Quaternion.Euler(0, 0, 0)) as GameObject;
+                    //projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneOnePosition[1].position, Quaternion.Euler(0, 0, 0)) as GameObject;
+                    //projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneOnePosition[2].position, Quaternion.Euler(0, 0, 0)) as GameObject;
                     Debug.Log("ZONE 1 FIRED");
-
+                    bulletCount++;
                     actionTimer = 0f;
                 }
             }
 
-            else if (Input.GetKeyUp(KeyCode.Space) && actionTimer >= zoneTwoTimer || actionTimer < zoneThreeTimer)
+            if (Input.GetKeyUp(KeyCode.Space) && actionTimer >= zoneTwoTimer && actionTimer < zoneThreeTimer)
             {
                 for (int i = 0; i < projectileToSpawn.Length; i++)
                 {
-                    projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneTwoPosition[0].position, Quaternion.Euler(0, 0, 0)) as GameObject;
-                    projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneTwoPosition[1].position, Quaternion.Euler(0, 0, 0)) as GameObject;
-                    projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneTwoPosition[2].position, Quaternion.Euler(0, 0, 0)) as GameObject;
-                    bulletCount++;
+                    projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneTwoPosition[i].position, Quaternion.Euler(0, 0, 0)) as GameObject;
+                    //projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneTwoPosition[1].position, Quaternion.Euler(0, 0, 0)) as GameObject;
+                    //projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneTwoPosition[2].position, Quaternion.Euler(0, 0, 0)) as GameObject;
                     Debug.Log("ZONE 2 FIRED");
-
+                    bulletCount++;
                     actionTimer = 0f;
                 }
             }
 
-            else if (Input.GetKeyUp(KeyCode.Space) && actionTimer >= zoneThreeTimer)
+            if (Input.GetKeyUp(KeyCode.Space) && actionTimer >= zoneThreeTimer)
             {
-                for (int i = 0; i < projectileToSpawn.Length; i++)
+                for (int i = 0; i < 1; i++)
                 {
-                    Debug.Log("Zone 3 FIRED");
                     projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneThreePosition[0].position, Quaternion.Euler(0, 0, 0)) as GameObject;
+                    Debug.Log("Zone 3 FIRED");
                     bulletCount++;
-
                     actionTimer = 0f;
                 }
             }
         }
+    }
 
-        
+    void DestroyBullet()
+    {
+        if (bulletCount >= 1)
+        {
+            // STARTS THE TIMER
+            bulletDestroyTimer += Time.deltaTime;
 
-        //if (Bullet.bluePower < blueFirstPower)
-        //{
-        //    // SPAWNS FIRST BULLET
-        //}
-        //else if (Bullet.bluePower >= blueSecondPower && Bullet.bluePower < blueThirdPower)
-        //{
-        //    // SPAWNS SECOND BULLET
-        //}
-        //else if (Bullet.bluePower >= blueThirdPower)
-        //{
-        //    // SPAWNS THIRD BULLET
-        //}
-        // SPAWNS BULLETS AND INCREMENTS bulletCount
+            // 2 SECONDS TO COMPLETION
+            if (bulletDestroyTimer >= actionComplete)
+            {
+                for (int i = 0; i < projectileToClone.Length; i++)
+                {
+                    Destroy(projectileToClone[i]);
+                }
+                bulletCount = 0;
+                bulletDestroyTimer = 0f;
+            }
+        }
     }
 
     void Update()
     {
         Shooting();
+        DestroyBullet();
     }
 }
+
