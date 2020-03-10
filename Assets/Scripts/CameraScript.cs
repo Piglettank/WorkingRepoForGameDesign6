@@ -11,8 +11,10 @@ public class CameraScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        
+        var target = Camera.main.transform.position;
+        target.y = transform.position.y;
+        transform.LookAt(target);
     }
 }
