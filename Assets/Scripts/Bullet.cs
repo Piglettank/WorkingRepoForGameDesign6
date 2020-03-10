@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private bool hasHit = false;
-
     public static float actionTimer = 0f;
     public static float actionComplete = 2f;
 
-    public static int bluePower = 0;
-    public static int greenPower = 0;
-    public static int yellowPower = 0;
+    //public static int bluePower = 0;
+    //public static int greenPower = 0;
+    //public static int yellowPower = 0;
 
     void Start()
     {
@@ -23,7 +21,6 @@ public class Bullet : MonoBehaviour
         // HIT SKIER GREEN
         if (other.gameObject.tag == "Skier")
         {
-            hasHit = true;
             Debug.Log("bullet hit skier");
         }
         //// HIT SKIER BLUE
