@@ -9,9 +9,9 @@ public class PlayerShooting : MonoBehaviour
     public Transform[] zoneThreePosition;
 
     public GameObject[] projectileToSpawn;
-    public GameObject[] projectileToClone;
+    private GameObject[] projectileToClone;
 
-    public static int bulletCount = 0;
+    public int bulletCount = 0;
 
     private float actionComplete = 2f;
     private float bulletDestroyTimer = 0f;
@@ -22,10 +22,6 @@ public class PlayerShooting : MonoBehaviour
 
     private bool hasBullet = true;
 
-    private int blueFirstPower = 2;
-    private int blueSecondPower = 4;
-    private int blueThirdPower = 6;
-
     void Start()
     {
         projectileToClone = new GameObject[projectileToSpawn.Length];
@@ -33,49 +29,69 @@ public class PlayerShooting : MonoBehaviour
 
     void Shooting()
     {
+        // CHECKS IF PLAYER CAN SHOOT OR NOT
         if (bulletCount < 1)
         {
             hasBullet = true;
         }
-        else if (bulletCount >= 1)
+        else
         {
             hasBullet = false;
         }
 
+        // IF THE PLAYER CAN SHOOT
         if (hasBullet)
         {
             if (Input.GetKey(KeyCode.Space))
             {
+                // STARTS TIMER WHEN SPACE IS PRESSED
                 actionTimer += Time.deltaTime;
                 Debug.Log(actionTimer);
+
+                // RANGE INDICATOR
+
+                // ZONE 1 INDICATOR
+                if (actionTimer < zoneTwoTimer)
+                {
+                    Debug.Log("ZONE ONE LOAD UP");
+                }
+                // ZONE 2 INDICATOR
+                else if (actionTimer >= zoneTwoTimer && actionTimer < zoneThreeTimer)
+                {
+                    Debug.Log("ZONE TWO LOAD UP");
+                }
+                // ZONE 3 INDICATOR
+                else if (actionTimer >= zoneThreeTimer)
+                {
+                    Debug.Log("ZONE THREE LOAD UP");
+                }
             }
 
+            // ZONE ONE ATTACK
             if (Input.GetKeyUp(KeyCode.Space) && actionTimer < zoneTwoTimer)
             {
                 for (int i = 0; i < projectileToSpawn.Length; i++)
                 {
                     projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneOnePosition[i].position, Quaternion.Euler(0, 0, 0)) as GameObject;
-                    //projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneOnePosition[1].position, Quaternion.Euler(0, 0, 0)) as GameObject;
-                    //projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneOnePosition[2].position, Quaternion.Euler(0, 0, 0)) as GameObject;
                     Debug.Log("ZONE 1 FIRED");
                     bulletCount++;
                     actionTimer = 0f;
                 }
             }
 
+            // ZONE TWO ATTACK
             if (Input.GetKeyUp(KeyCode.Space) && actionTimer >= zoneTwoTimer && actionTimer < zoneThreeTimer)
             {
                 for (int i = 0; i < projectileToSpawn.Length; i++)
                 {
                     projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneTwoPosition[i].position, Quaternion.Euler(0, 0, 0)) as GameObject;
-                    //projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneTwoPosition[1].position, Quaternion.Euler(0, 0, 0)) as GameObject;
-                    //projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneTwoPosition[2].position, Quaternion.Euler(0, 0, 0)) as GameObject;
                     Debug.Log("ZONE 2 FIRED");
                     bulletCount++;
                     actionTimer = 0f;
                 }
             }
 
+            // ZONE THREE ATTACK
             if (Input.GetKeyUp(KeyCode.Space) && actionTimer >= zoneThreeTimer)
             {
                 for (int i = 0; i < 1; i++)
@@ -96,7 +112,7 @@ public class PlayerShooting : MonoBehaviour
             // STARTS THE TIMER
             bulletDestroyTimer += Time.deltaTime;
 
-            // 2 SECONDS TO COMPLETION
+            // 2 SECONDS UNTIL DESTROYED
             if (bulletDestroyTimer >= actionComplete)
             {
                 for (int i = 0; i < projectileToClone.Length; i++)
