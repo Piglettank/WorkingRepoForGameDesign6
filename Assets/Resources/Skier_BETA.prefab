@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1128066056469631569}
   m_Layer: 0
   m_Name: Skier_BETA
-  m_TagString: Skier
+  m_TagString: skiers
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,8 +93,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 1.977
+  m_Height: 14.25586
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6658217057397461588
