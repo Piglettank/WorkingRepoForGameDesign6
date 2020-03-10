@@ -9,7 +9,14 @@ public class PlayerShooting : MonoBehaviour
     public Transform[] zoneThreePosition;
 
     public GameObject[] projectileToSpawn;
+
+    public ParticleSystem[] rangeIndicators;
+
     private GameObject[] projectileToClone;
+
+    public static bool rangeIndicatorOne = false;
+    public static bool rangeIndicatorTwo = false;
+    public static bool rangeIndicatorThree = false;
 
     public int bulletCount = 0;
 
@@ -53,16 +60,29 @@ public class PlayerShooting : MonoBehaviour
                 // ZONE 1 INDICATOR
                 if (actionTimer < zoneTwoTimer)
                 {
+                    // INDICATOR ONE TRUE
+                    rangeIndicatorOne = true;
+
                     Debug.Log("ZONE ONE LOAD UP");
                 }
                 // ZONE 2 INDICATOR
                 else if (actionTimer >= zoneTwoTimer && actionTimer < zoneThreeTimer)
                 {
+                    // INDICATOR ONE FALSE
+                    // INDICATOR TWO TRUE
+                    rangeIndicatorOne = false;
+                    rangeIndicatorTwo = true;
+
                     Debug.Log("ZONE TWO LOAD UP");
                 }
                 // ZONE 3 INDICATOR
                 else if (actionTimer >= zoneThreeTimer)
                 {
+                    // INDICATOR TWO FALSE
+                    // INDICATOR THREE TRUE
+                    rangeIndicatorTwo = false;
+                    rangeIndicatorThree = true;
+
                     Debug.Log("ZONE THREE LOAD UP");
                 }
             }
