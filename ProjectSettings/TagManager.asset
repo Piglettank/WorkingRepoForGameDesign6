@@ -7,6 +7,7 @@ TagManager:
   - Mouth
   - Wall
   - skiers
+  - Bullet
   layers:
   - Default
   - TransparentFX
