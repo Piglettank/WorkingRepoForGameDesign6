@@ -23,7 +23,7 @@ public class SkiersSpawner : MonoBehaviour
         {
             xPos = Random.Range(-9, 7);
 
-            Instantiate(enemy, new Vector3(xPos, 1, -50), Quaternion.identity);
+            Instantiate(enemy, new Vector3(xPos, 2, -50), Quaternion.identity);
             enemyCount++;
             yield return new WaitForSeconds(Random.Range(5, 7 - minSpawnDelay));
         }
