@@ -10,8 +10,6 @@ public class PlayerShooting : MonoBehaviour
 
     public GameObject[] projectileToSpawn;
 
-    public ParticleSystem[] rangeIndicators;
-
     private GameObject[] projectileToClone;
 
     public static bool rangeIndicatorOne = false;
@@ -53,7 +51,6 @@ public class PlayerShooting : MonoBehaviour
             {
                 // STARTS TIMER WHEN SPACE IS PRESSED
                 actionTimer += Time.deltaTime;
-                Debug.Log(actionTimer);
 
                 // RANGE INDICATOR
 

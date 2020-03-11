@@ -4,21 +4,13 @@ using UnityEngine;
 
 public class PlayerRangeIndicator : MonoBehaviour
 {
-    public ParticleSystem[] rangeOne;
-    public ParticleSystem[] rangeTwo;
-    public ParticleSystem[] rangeThree;
+    public GameObject[] rangeOne;
+    public GameObject[] rangeTwo;
+    public GameObject[] rangeThree;
 
     void Start()
     {
-        rangeOne[0].GetComponent<ParticleSystem>();
-        rangeOne[1].GetComponent<ParticleSystem>();
-        rangeOne[2].GetComponent<ParticleSystem>();
 
-        rangeTwo[0].GetComponent<ParticleSystem>();
-        rangeTwo[1].GetComponent<ParticleSystem>();
-        rangeTwo[2].GetComponent<ParticleSystem>();
-
-        rangeThree[0].GetComponent<ParticleSystem>();
     }
 
     void RangeIndicator()
@@ -27,30 +19,54 @@ public class PlayerRangeIndicator : MonoBehaviour
         {
             for (int i = 0; i < rangeOne.Length; i++)
             {
-                rangeOne[i].Play();
+                rangeOne[i].SetActive(true);
                 PlayerShooting.rangeIndicatorOne = false;
+                Debug.Log("RANGE 1 ACTIVE");
             }
-            
+        }
+        else
+        {
+            for (int i = 0; i < rangeOne.Length; i++)
+            {
+                rangeOne[i].SetActive(false);
+                Debug.Log("RANGE 1 DEACTIVATED");
+            }
         }
 
         if (PlayerShooting.rangeIndicatorTwo)
         {
             for (int i = 0; i < rangeTwo.Length; i++)
             {
-                rangeTwo[i].Play();
+                rangeTwo[i].SetActive(true);
                 PlayerShooting.rangeIndicatorTwo = false;
+                Debug.Log("RANGE 2 ACTIVE");
             }
-            
+        }
+        else
+        {
+            for (int i = 0; i < rangeTwo.Length; i++)
+            {
+                rangeTwo[i].SetActive(false);
+                Debug.Log("RANGE 2 DEACTIVATED");
+            }
         }
 
         if (PlayerShooting.rangeIndicatorThree)
         {
             for (int i = 0; i < rangeThree.Length; i++)
             {
-                rangeThree[i].Play();
+                rangeThree[i].SetActive(true);
                 PlayerShooting.rangeIndicatorThree = false;
+                Debug.Log("RANGE 3 ACTIVE");
             }
-            
+        }
+        else
+        {
+            for (int i = 0; i < rangeThree.Length; i++)
+            {
+                rangeThree[i].SetActive(false);
+                Debug.Log("RANGE 3 DEACTIVATED");
+            }
         }
     }
 
