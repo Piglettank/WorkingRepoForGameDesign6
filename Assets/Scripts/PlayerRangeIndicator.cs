@@ -15,57 +15,57 @@ public class PlayerRangeIndicator : MonoBehaviour
 
     void RangeIndicator()
     {
+        // MAKE RANGE ONE ACTIVE
         if (PlayerShooting.rangeIndicatorOne)
         {
             for (int i = 0; i < rangeOne.Length; i++)
             {
                 rangeOne[i].SetActive(true);
                 PlayerShooting.rangeIndicatorOne = false;
-                Debug.Log("RANGE 1 ACTIVE");
             }
         }
+        // MAKE RANGE ONE DEACTIVE
         else
         {
             for (int i = 0; i < rangeOne.Length; i++)
             {
                 rangeOne[i].SetActive(false);
-                Debug.Log("RANGE 1 DEACTIVATED");
             }
         }
 
+        // MAKE RANGE TWO ACTIVE
         if (PlayerShooting.rangeIndicatorTwo)
         {
             for (int i = 0; i < rangeTwo.Length; i++)
             {
                 rangeTwo[i].SetActive(true);
                 PlayerShooting.rangeIndicatorTwo = false;
-                Debug.Log("RANGE 2 ACTIVE");
             }
         }
+        // MAKE RANGE TWO DEACTIVE
         else
         {
             for (int i = 0; i < rangeTwo.Length; i++)
             {
                 rangeTwo[i].SetActive(false);
-                Debug.Log("RANGE 2 DEACTIVATED");
             }
         }
 
+        // MAKE RANGE THREE ACTIVE
         if (PlayerShooting.rangeIndicatorThree)
         {
             for (int i = 0; i < rangeThree.Length; i++)
             {
                 rangeThree[i].SetActive(true);
                 PlayerShooting.rangeIndicatorThree = false;
-                Debug.Log("RANGE 3 ACTIVE");
             }
         }
+        // MAKE RANGE TWO DEACTIVE
         else
         {
             for (int i = 0; i < rangeThree.Length; i++)
             {
                 rangeThree[i].SetActive(false);
-                Debug.Log("RANGE 3 DEACTIVATED");
             }
         }
     }
