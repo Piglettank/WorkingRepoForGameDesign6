@@ -15,8 +15,7 @@ public class JohansShittyAnimationScript : MonoBehaviour
 
     void Update()
     {
-        //Set joakimRotation to the z rotation of the Gucci Gang
+        //Set animator's joakimRotation to the euler y angle (Inspector y rotation) of the Gucci Gang
         playerAnimator.SetFloat("joakimRotation", 360 - circle.transform.eulerAngles.y);
-        Debug.Log(circle.transform.rotation.z);
     }
 }
