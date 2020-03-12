@@ -29,11 +29,13 @@ public class PlayerShooting : MonoBehaviour
     public float zoneThreeTimer = 3f;
 
     private bool hasBullet = true;
+    Animator playerAnimator;
 
     void Start()
     {
         projectileToClone = new GameObject[projectileToSpawn.Length];
         projectileScaleChange = new Vector3(projectileScale, 0f, projectileScale);
+        playerAnimator = gameObject.GetComponent<Animator>();
     }
 
     void Shooting()
@@ -56,6 +58,7 @@ public class PlayerShooting : MonoBehaviour
                 // STARTS TIMER WHEN SPACE IS PRESSED
                 actionTimer += Time.deltaTime;
                 PlayerMovement.canMove = false;
+                playerAnimator.SetBool("isCharging", true);
 
                 // RANGE INDICATOR
 
@@ -86,6 +89,8 @@ public class PlayerShooting : MonoBehaviour
             // ZONE ONE ATTACK
             if (Input.GetKeyUp(KeyCode.Space) && actionTimer < zoneTwoTimer)
             {
+                playerAnimator.SetBool("isCharging", false);
+                playerAnimator.SetBool("isThrowing", true);
                 for (int i = 0; i < projectileToSpawn.Length; i++)
                 {
                     projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneOnePosition[i].position, Quaternion.Euler(0, 0, 0)) as GameObject;
@@ -105,7 +110,10 @@ public class PlayerShooting : MonoBehaviour
 
             // ZONE TWO ATTACK
             if (Input.GetKeyUp(KeyCode.Space) && actionTimer >= zoneTwoTimer && actionTimer < zoneThreeTimer)
+
             {
+                playerAnimator.SetBool("isCharging", false);
+                playerAnimator.SetBool("isThrowing", true);
                 for (int i = 0; i < projectileToSpawn.Length; i++)
                 {
                     projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneTwoPosition[i].position, Quaternion.Euler(0, 0, 0)) as GameObject;
@@ -126,6 +134,8 @@ public class PlayerShooting : MonoBehaviour
             // ZONE THREE ATTACK
             if (Input.GetKeyUp(KeyCode.Space) && actionTimer >= zoneThreeTimer)
             {
+                playerAnimator.SetBool("isCharging", false);
+                playerAnimator.SetBool("isThrowing", true);
                 for (int i = 0; i < 1; i++)
                 {
                     projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneThreePosition[0].position, Quaternion.Euler(0, 0, 0)) as GameObject;

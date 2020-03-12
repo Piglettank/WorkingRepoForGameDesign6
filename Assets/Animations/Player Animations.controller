@@ -304,6 +304,12 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: joakimRotation
     m_EventTreshold: 360
+  - m_ConditionMode: 2
+    m_ConditionEvent: isThrowing
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isCharging
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2312544010367752937}
   m_Solo: 0
@@ -441,6 +447,12 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: joakimRotation
     m_EventTreshold: 31
+  - m_ConditionMode: 2
+    m_ConditionEvent: isCharging
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isThrowing
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1870255393290429156}
   m_Solo: 0
@@ -630,6 +642,12 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: joakimRotation
     m_EventTreshold: 330
+  - m_ConditionMode: 2
+    m_ConditionEvent: isCharging
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isThrowing
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -9173036580403077784}
   m_Solo: 0
@@ -684,6 +702,12 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: joakimRotation
     m_EventTreshold: 120
+  - m_ConditionMode: 2
+    m_ConditionEvent: isCharging
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isThrowing
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 901074193943631437}
   m_Solo: 0
@@ -712,6 +736,12 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: joakimRotation
     m_EventTreshold: 300
+  - m_ConditionMode: 2
+    m_ConditionEvent: isCharging
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isThrowing
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2798258922696566277}
   m_Solo: 0
@@ -766,6 +796,12 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: joakimRotation
     m_EventTreshold: 210
+  - m_ConditionMode: 2
+    m_ConditionEvent: isThrowing
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isCharging
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4360333826094310987}
   m_Solo: 0
@@ -1045,19 +1081,19 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isCharging
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isThrowing
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -1199,6 +1235,12 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: joakimRotation
     m_EventTreshold: 270
+  - m_ConditionMode: 2
+    m_ConditionEvent: isCharging
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isThrowing
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3930830215744729822}
   m_Solo: 0
@@ -1284,6 +1326,12 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: joakimRotation
     m_EventTreshold: 180
+  - m_ConditionMode: 2
+    m_ConditionEvent: isThrowing
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isThrowing
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3491904235858420783}
   m_Solo: 0
@@ -1447,6 +1495,12 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: joakimRotation
     m_EventTreshold: 60
+  - m_ConditionMode: 2
+    m_ConditionEvent: isCharging
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isThrowing
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3223002007827114991}
   m_Solo: 0
@@ -1755,6 +1809,12 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: joakimRotation
     m_EventTreshold: 90
+  - m_ConditionMode: 2
+    m_ConditionEvent: isCharging
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isThrowing
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8252624764359854406}
   m_Solo: 0
@@ -1980,6 +2040,12 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: joakimRotation
     m_EventTreshold: 240
+  - m_ConditionMode: 2
+    m_ConditionEvent: isCharging
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isThrowing
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1326875454331550924}
   m_Solo: 0
@@ -2117,6 +2183,12 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: joakimRotation
     m_EventTreshold: 150
+  - m_ConditionMode: 2
+    m_ConditionEvent: isThrowing
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isThrowing
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7350492692310079763}
   m_Solo: 0
