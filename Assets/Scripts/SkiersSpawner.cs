@@ -31,7 +31,6 @@ public class SkiersSpawner : MonoBehaviour
 
             Instantiate(enemy, new Vector3(xPos, 2, -55 + Random.Range(0,5)), Quaternion.identity);
             enemyCount++;
-            Debug.Log("enemyCount = " + enemyCount);
             yield return new WaitForSeconds(2);
         }
     }
@@ -44,12 +43,10 @@ public class SkiersSpawner : MonoBehaviour
         {
             maxEnemies += 2;
             skierTimer = 0f;
-            Debug.Log("maxEnemies = " + maxEnemies);
 
             if (minSpawnDelay > 3.5f)
             {
                 minSpawnDelay--;
-                Debug.Log("minSpawnDelay = " + minSpawnDelay);
             }
         }
     }

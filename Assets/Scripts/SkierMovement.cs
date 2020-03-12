@@ -21,11 +21,7 @@ public class SkierMovement : MonoBehaviour
 	public bool onBeat = false;
 	public static bool onBeatWait = false;
 
-	private void OnTriggerEnter(Collider other)
-	{
-		onBeatWait = true;
-	}
-
+	public GameObject particleEffect;
 	void Start()
 	{
 		pos = transform.position;
@@ -39,7 +35,9 @@ public class SkierMovement : MonoBehaviour
 
 		if (onBeat)
 		{
+			particleEffect.SetActive(true);
 			XmoveSpeed = 2f;
+			YmoveSpeed = 1f;
 			frequency = 6f;
 			magnitude = 1f;
 			MoveRight();
