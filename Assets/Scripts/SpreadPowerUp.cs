@@ -14,6 +14,8 @@ public class SpreadPowerUp : MonoBehaviour
     private Vector3[] scaleRangeChangeTwo = new Vector3[3];
     private Vector3 scaleIndicatorChange;
 
+    public static int spreadPowerUp = 0;
+
     public float spreadIncrease = 0.10f;
 
     private float spreadRangeIncreaseOne = 0.5f;
@@ -49,7 +51,10 @@ public class SpreadPowerUp : MonoBehaviour
         // TEMPORARY INPUT F
         if (Input.GetKeyDown(KeyCode.F))
         {
-            // INCREASE THE SPREAD
+            // INCREASE THE POWER-UP INT FOR EVERY PICK-UP
+            spreadPowerUp++;
+
+            // INCREASE THE SPREAD FOR PLAYERS
             for (int i = 0; i < scaleChange.Length; i++)
             {
                 playerPosition[i].transform.localPosition += scaleChange[i];
@@ -64,7 +69,7 @@ public class SpreadPowerUp : MonoBehaviour
             {
                 rangePositionTwo[i].transform.localPosition += scaleRangeChangeTwo[i];
             }
-            Debug.Log("Increase SPREAD");
+            // INCREASE SIZE OF RANGE INDICATOR
             for (int i = 0; i < rangeIndicator.Length; i++)
             {
                 rangeIndicator[i].transform.localScale += scaleIndicatorChange;

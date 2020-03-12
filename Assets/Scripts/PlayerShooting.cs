@@ -12,12 +12,15 @@ public class PlayerShooting : MonoBehaviour
 
     private GameObject[] projectileToClone;
 
+    private Vector3 projectileScaleChange;
+
     public static bool rangeIndicatorOne = false;
     public static bool rangeIndicatorTwo = false;
     public static bool rangeIndicatorThree = false;
 
     public int bulletCount = 0;
 
+    private float projectileScale = 0.5f;
     private float actionComplete = 2f;
     private float bulletDestroyTimer = 0f;
     private float actionTimer = 0f;
@@ -30,6 +33,7 @@ public class PlayerShooting : MonoBehaviour
     void Start()
     {
         projectileToClone = new GameObject[projectileToSpawn.Length];
+        projectileScaleChange = new Vector3(projectileScale, 0f, projectileScale);
     }
 
     void Shooting()
@@ -59,8 +63,6 @@ public class PlayerShooting : MonoBehaviour
                 {
                     // INDICATOR ONE TRUE
                     rangeIndicatorOne = true;
-
-                    Debug.Log("ZONE ONE LOAD UP");
                 }
                 // ZONE 2 INDICATOR
                 else if (actionTimer >= zoneTwoTimer && actionTimer < zoneThreeTimer)
@@ -69,8 +71,6 @@ public class PlayerShooting : MonoBehaviour
                     // INDICATOR TWO TRUE
                     rangeIndicatorOne = false;
                     rangeIndicatorTwo = true;
-
-                    Debug.Log("ZONE TWO LOAD UP");
                 }
                 // ZONE 3 INDICATOR
                 else if (actionTimer >= zoneThreeTimer)
@@ -79,8 +79,6 @@ public class PlayerShooting : MonoBehaviour
                     // INDICATOR THREE TRUE
                     rangeIndicatorTwo = false;
                     rangeIndicatorThree = true;
-
-                    Debug.Log("ZONE THREE LOAD UP");
                 }
             }
 
@@ -90,9 +88,16 @@ public class PlayerShooting : MonoBehaviour
                 for (int i = 0; i < projectileToSpawn.Length; i++)
                 {
                     projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneOnePosition[i].position, Quaternion.Euler(0, 0, 0)) as GameObject;
-                    Debug.Log("ZONE 1 FIRED");
+
                     bulletCount++;
                     actionTimer = 0f;
+
+                    Debug.Log("ZONE 1 FIRED");
+                }
+                // INCREASES THE PROJECTILE SIZE WITH POWER UP
+                for (int j = 0; j < SpreadPowerUp.spreadPowerUp; j++)
+                {
+                    projectileToClone[j].transform.localScale += projectileScaleChange;
                 }
             }
 
@@ -102,9 +107,16 @@ public class PlayerShooting : MonoBehaviour
                 for (int i = 0; i < projectileToSpawn.Length; i++)
                 {
                     projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneTwoPosition[i].position, Quaternion.Euler(0, 0, 0)) as GameObject;
-                    Debug.Log("ZONE 2 FIRED");
+                    
                     bulletCount++;
                     actionTimer = 0f;
+
+                    Debug.Log("ZONE 2 FIRED");
+                }
+                // INCREASES THE PROJECTILE SIZE WITH POWER UP
+                for (int j = 0; j < SpreadPowerUp.spreadPowerUp; j++)
+                {
+                    projectileToClone[j].transform.localScale += projectileScaleChange;
                 }
             }
 
@@ -114,9 +126,16 @@ public class PlayerShooting : MonoBehaviour
                 for (int i = 0; i < 1; i++)
                 {
                     projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneThreePosition[0].position, Quaternion.Euler(0, 0, 0)) as GameObject;
-                    Debug.Log("Zone 3 FIRED");
+                    
                     bulletCount++;
                     actionTimer = 0f;
+
+                    Debug.Log("Zone 3 FIRED");
+                }
+                // INCREASES THE PROJECTILE SIZE WITH POWER UP
+                for (int j = 0; j < SpreadPowerUp.spreadPowerUp; j++)
+                {
+                    projectileToClone[j].transform.localScale += projectileScaleChange;
                 }
             }
         }
