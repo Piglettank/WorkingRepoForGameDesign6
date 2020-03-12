@@ -41,18 +41,25 @@ public class SkierMovement : MonoBehaviour
 
     private void Update()
     {
-		xPosOld = xPos;
-		xPos = transform.position.x;
-		xPosDiff = xPosOld - xPos;
-		skierAnimator.SetFloat("xSpeed", xPosDiff);
+		//xPosOld = xPos;
+		//xPos = transform.position.x;
+		//xPosDiff = (xPosOld - xPos) * 10;
+		//skierAnimator.SetFloat("xSpeed", xPosDiff);
 	}
 
 	private void FixedUpdate()
 	{
-		if (onBeatWait) beatTimer += Time.deltaTime;
+        xPosOld = xPos;
+        xPos = transform.position.x;
+        xPosDiff = (xPos - xPosOld) * 10;
+        //xPosDiff = (xPosOld - xPos) * 10;
+        skierAnimator.SetFloat("xSpeed", xPosDiff);
+
+        if (onBeatWait) beatTimer += Time.deltaTime;
 
 		if (onBeat)
 		{
+            skierAnimator.SetBool("isHigh", true);
 			particleEffect0.SetActive(true);
 			particleEffect1.SetActive(true);
 			particleEffect2.SetActive(true);
@@ -64,6 +71,10 @@ public class SkierMovement : MonoBehaviour
 			magnitude = 1f;
 			MoveRight();
 		}
+        else
+        {
+            skierAnimator.SetBool("isHigh", false);
+        }
 
 		
 		if (onBeatWait && beatTimer % 0.5 <= 0.1f)
