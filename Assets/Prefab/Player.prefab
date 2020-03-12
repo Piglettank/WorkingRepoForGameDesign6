@@ -418,6 +418,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5172879945250403315}
   - component: {fileID: 587756117051244247}
+  - component: {fileID: 496899576574279123}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -456,6 +457,52 @@ MonoBehaviour:
   - {fileID: 5172879945507640288}
   - {fileID: 5172879945508345833}
   - {fileID: 5172879946136534548}
+  rangePositionOne:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  rangePositionTwo:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  rangeIndicator:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  spreadIncrease: 0.1
+--- !u!114 &496899576574279123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5172879945250403312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97e94fbe00bb80e499d23af05de74def, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoneOnePosition:
+  - {fileID: 5172879944438489939}
+  - {fileID: 5172879946325588353}
+  - {fileID: 5172879946305086053}
+  zoneTwoPosition:
+  - {fileID: 5172879945720830112}
+  - {fileID: 5172879946252265753}
+  - {fileID: 5172879944915980434}
+  zoneThreePosition:
+  - {fileID: 5172879945827563209}
+  projectileToSpawn:
+  - {fileID: 4046658038357342513, guid: 8da709f2915db4b4d9f041d2982c6ac8, type: 3}
+  - {fileID: 4046658038357342513, guid: 8da709f2915db4b4d9f041d2982c6ac8, type: 3}
+  - {fileID: 4046658038357342513, guid: 8da709f2915db4b4d9f041d2982c6ac8, type: 3}
+  bulletCount: 0
+  zoneTwoTimer: 1.5
+  zoneThreeTimer: 3
 --- !u!1 &5172879945507640289
 GameObject:
   m_ObjectHideFlags: 0
@@ -1245,7 +1292,6 @@ GameObject:
   - component: {fileID: 5172879946480753313}
   - component: {fileID: 5172879946480753317}
   - component: {fileID: 5172879946480753318}
-  - component: {fileID: 5172879946480753312}
   - component: {fileID: 5172879946480753338}
   m_Layer: 0
   m_Name: Player Circle
@@ -1350,35 +1396,6 @@ MonoBehaviour:
   circle: {fileID: 5172879946480753339}
   moveSpeed: 15
   rotationSpeed: 200
---- !u!114 &5172879946480753312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5172879946480753339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97e94fbe00bb80e499d23af05de74def, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zoneOnePosition:
-  - {fileID: 5172879944438489939}
-  - {fileID: 5172879946325588353}
-  - {fileID: 5172879946305086053}
-  zoneTwoPosition:
-  - {fileID: 5172879945720830112}
-  - {fileID: 5172879946252265753}
-  - {fileID: 5172879944915980434}
-  zoneThreePosition:
-  - {fileID: 5172879945827563209}
-  projectileToSpawn:
-  - {fileID: 4046658038357342513, guid: 8da709f2915db4b4d9f041d2982c6ac8, type: 3}
-  - {fileID: 4046658038357342513, guid: 8da709f2915db4b4d9f041d2982c6ac8, type: 3}
-  - {fileID: 4046658038357342513, guid: 8da709f2915db4b4d9f041d2982c6ac8, type: 3}
-  bulletCount: 0
-  zoneTwoTimer: 1.5
-  zoneThreeTimer: 3
 --- !u!65 &5172879946480753338
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2017,15 +2034,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e782871b954ec3245b1a58369b7a7e3e, type: 3}
---- !u!1 &7776354449596304969 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1327857502612549978, guid: e782871b954ec3245b1a58369b7a7e3e,
-    type: 3}
-  m_PrefabInstance: {fileID: 8756781593566756627}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2044788673407956008 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7342795936864701243, guid: e782871b954ec3245b1a58369b7a7e3e,
+    type: 3}
+  m_PrefabInstance: {fileID: 8756781593566756627}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7776354449596304969 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1327857502612549978, guid: e782871b954ec3245b1a58369b7a7e3e,
     type: 3}
   m_PrefabInstance: {fileID: 8756781593566756627}
   m_PrefabAsset: {fileID: 0}
