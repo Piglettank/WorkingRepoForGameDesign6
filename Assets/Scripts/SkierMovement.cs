@@ -21,7 +21,12 @@ public class SkierMovement : MonoBehaviour
 	public bool onBeat = false;
 	public static bool onBeatWait = false;
 
-	public GameObject particleEffect;
+	public GameObject particleEffect0;
+	public GameObject particleEffect1;
+	public GameObject particleEffect2;
+	public GameObject particleEffect3;
+
+
 	void Start()
 	{
 		pos = transform.position;
@@ -35,7 +40,11 @@ public class SkierMovement : MonoBehaviour
 
 		if (onBeat)
 		{
-			particleEffect.SetActive(true);
+			particleEffect0.SetActive(true);
+			particleEffect1.SetActive(true);
+			particleEffect2.SetActive(true);
+			particleEffect3.SetActive(true);
+
 			XmoveSpeed = 2f;
 			YmoveSpeed = 3f;
 			frequency = 6f;
