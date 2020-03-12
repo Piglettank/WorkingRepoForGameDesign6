@@ -14,8 +14,6 @@ public class SpreadPowerUp : MonoBehaviour
     private Vector3[] scaleRangeChangeTwo = new Vector3[3];
     private Vector3 scaleIndicatorChange;
 
-    public static int spreadPowerUp = 0;
-
     public float spreadIncrease = 0.10f;
 
     private float spreadRangeIncreaseOne = 0.5f;
@@ -47,13 +45,17 @@ public class SpreadPowerUp : MonoBehaviour
 
     void Spread()
     {
-        // if (HitIndicator.spreadPower == 2)
-        // TEMPORARY INPUT F
+        // CHEAT CODE BUTTON F
+        // GET SPREADPOWER
         if (Input.GetKeyDown(KeyCode.F))
         {
-            // INCREASE THE POWER-UP INT FOR EVERY PICK-UP
-            spreadPowerUp++;
-
+            HitIndicator.spreadPower++;
+        }
+        // IF YOU HIT AN ENEMY YOU GET SPREAD POWER
+        if (HitIndicator.spreadPower > 0)
+        {
+            // SPREAD POWER "RESETS"
+            HitIndicator.spreadPower--;
             // INCREASE THE SPREAD FOR PLAYERS
             for (int i = 0; i < scaleChange.Length; i++)
             {
@@ -74,7 +76,6 @@ public class SpreadPowerUp : MonoBehaviour
             {
                 rangeIndicator[i].transform.localScale += scaleIndicatorChange;
             }
-            //HitIndicator.spreadPower = 2;
         }
     }
 

@@ -95,7 +95,7 @@ public class PlayerShooting : MonoBehaviour
                     Debug.Log("ZONE 1 FIRED");
                 }
                 // INCREASES THE PROJECTILE SIZE WITH POWER UP
-                for (int j = 0; j < SpreadPowerUp.spreadPowerUp; j++)
+                for (int j = 0; j < HitIndicator.spreadPower; j++)
                 {
                     projectileToClone[j].transform.localScale += projectileScaleChange;
                 }
@@ -114,7 +114,7 @@ public class PlayerShooting : MonoBehaviour
                     Debug.Log("ZONE 2 FIRED");
                 }
                 // INCREASES THE PROJECTILE SIZE WITH POWER UP
-                for (int j = 0; j < SpreadPowerUp.spreadPowerUp; j++)
+                for (int j = 0; j < HitIndicator.spreadPower; j++)
                 {
                     projectileToClone[j].transform.localScale += projectileScaleChange;
                 }
@@ -133,7 +133,7 @@ public class PlayerShooting : MonoBehaviour
                     Debug.Log("Zone 3 FIRED");
                 }
                 // INCREASES THE PROJECTILE SIZE WITH POWER UP
-                for (int j = 0; j < SpreadPowerUp.spreadPowerUp; j++)
+                for (int j = 0; j < HitIndicator.spreadPower; j++)
                 {
                     projectileToClone[j].transform.localScale += projectileScaleChange;
                 }
