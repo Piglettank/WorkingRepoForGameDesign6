@@ -12,6 +12,8 @@ public class PlayerShooting : MonoBehaviour
 
     private GameObject[] projectileToClone;
 
+    private Animator playerAnimator;
+
     private Vector3 projectileScaleChange;
 
     public static bool rangeIndicatorOne = false;
@@ -25,11 +27,15 @@ public class PlayerShooting : MonoBehaviour
     private float bulletDestroyTimer = 0f;
     private float actionTimer = 0f;
 
+    private float cooldownTimer = 0f;
+    public float cooldownComplete = 0.75f;
+
     public float zoneTwoTimer = 1.5f;
     public float zoneThreeTimer = 3f;
 
     private bool hasBullet = true;
-    Animator playerAnimator;
+    private bool startCooldown = false;
+    
 
     void Start()
     {
@@ -89,15 +95,15 @@ public class PlayerShooting : MonoBehaviour
             // ZONE ONE ATTACK
             if (Input.GetKeyUp(KeyCode.Space) && actionTimer < zoneTwoTimer)
             {
+                startCooldown = true;
+                PlayerMovement.canMove = false;
+
                 playerAnimator.SetBool("isCharging", false);
                 playerAnimator.SetBool("isThrowing", true);
                 for (int i = 0; i < projectileToSpawn.Length; i++)
                 {
                     projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneOnePosition[i].position, Quaternion.Euler(0, 0, 0)) as GameObject;
 
-                    PlayerMovement.canMove = true;
-                    bulletCount++;
-                    actionTimer = 0f;
 
                     Debug.Log("ZONE 1 FIRED");
                 }
@@ -110,17 +116,15 @@ public class PlayerShooting : MonoBehaviour
 
             // ZONE TWO ATTACK
             if (Input.GetKeyUp(KeyCode.Space) && actionTimer >= zoneTwoTimer && actionTimer < zoneThreeTimer)
-
             {
+                startCooldown = true;
+                PlayerMovement.canMove = false;
+
                 playerAnimator.SetBool("isCharging", false);
                 playerAnimator.SetBool("isThrowing", true);
                 for (int i = 0; i < projectileToSpawn.Length; i++)
                 {
                     projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneTwoPosition[i].position, Quaternion.Euler(0, 0, 0)) as GameObject;
-
-                    PlayerMovement.canMove = true;
-                    bulletCount++;
-                    actionTimer = 0f;
 
                     Debug.Log("ZONE 2 FIRED");
                 }
@@ -134,15 +138,14 @@ public class PlayerShooting : MonoBehaviour
             // ZONE THREE ATTACK
             if (Input.GetKeyUp(KeyCode.Space) && actionTimer >= zoneThreeTimer)
             {
+                startCooldown = true;
+                PlayerMovement.canMove = false;
+
                 playerAnimator.SetBool("isCharging", false);
                 playerAnimator.SetBool("isThrowing", true);
                 for (int i = 0; i < 1; i++)
                 {
                     projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneThreePosition[0].position, Quaternion.Euler(0, 0, 0)) as GameObject;
-
-                    PlayerMovement.canMove = true;
-                    bulletCount++;
-                    actionTimer = 0f;
 
                     Debug.Log("Zone 3 FIRED");
                 }
@@ -150,6 +153,21 @@ public class PlayerShooting : MonoBehaviour
                 for (int j = 0; j < HitIndicator.spreadPower; j++)
                 {
                     projectileToClone[j].transform.localScale += projectileScaleChange;
+                }
+            }
+
+            if (startCooldown)
+            {
+                cooldownTimer += Time.deltaTime;
+                Debug.Log(cooldownTimer);
+                if (cooldownTimer >= cooldownComplete)
+                {
+                    PlayerMovement.canMove = true;
+                    bulletCount++;
+                    actionTimer = 0f;
+                    cooldownTimer = 0f;
+                    startCooldown = false;
+                    Debug.Log("cooldown complete");
                 }
             }
         }
