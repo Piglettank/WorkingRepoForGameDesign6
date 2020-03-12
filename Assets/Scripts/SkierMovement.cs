@@ -4,22 +4,22 @@ public class SkierMovement : MonoBehaviour
 {
 
 	[SerializeField]
-	public static float XmoveSpeed = 1f;
+	float XmoveSpeed = 1f;
 
 	[SerializeField]
-	public static float YmoveSpeed = 0f;
+	float YmoveSpeed = 5f;
 
 	[SerializeField]
-	public static float frequency = 2f;
+	float frequency = 2f;
 
 	[SerializeField]
-	public static float magnitude = 2f;
+	float magnitude = 2f;
 
 	Vector3 pos, localScale;
 
 	float beatTimer = 0;
-	bool onBeat = false;
-	public bool onBeatWait = false;
+	public bool onBeat = false;
+	public static bool onBeatWait = false;
 
 	private void OnTriggerEnter(Collider other)
 	{
@@ -48,7 +48,6 @@ public class SkierMovement : MonoBehaviour
 		
 		if (onBeatWait && beatTimer % 0.5 <= 0.1f)
 		{
-			Debug.Log("beatTimer % 2 > 0.1f");
 			MoveRight();
 			onBeat = true;
 			onBeatWait = false;

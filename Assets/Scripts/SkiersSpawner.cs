@@ -5,14 +5,20 @@ using UnityEngine;
 public class SkiersSpawner : MonoBehaviour
 {
     public GameObject enemy;
+
     private float xPos;
+
     public static int enemyCount;
     public int maxEnemies;
+
     private float skierTimer;
     private int minSpawnDelay;
+
+
+
     void Start()
     {
-        maxEnemies = 4;
+        maxEnemies = 8;
 
         StartCoroutine(EnemySpawn());
     }
@@ -21,11 +27,12 @@ public class SkiersSpawner : MonoBehaviour
     {
         while (enemyCount < maxEnemies)
         {
-            xPos = Random.Range(-9, 7);
+            xPos = Random.Range(-15, 16);
 
-            Instantiate(enemy, new Vector3(xPos, 2, -50), Quaternion.identity);
+            Instantiate(enemy, new Vector3(xPos, 2, -55 + Random.Range(0,5)), Quaternion.identity);
             enemyCount++;
-            yield return new WaitForSeconds(Random.Range(5, 7 - minSpawnDelay));
+            Debug.Log("enemyCount = " + enemyCount);
+            yield return new WaitForSeconds(2);
         }
     }
 
@@ -33,14 +40,16 @@ public class SkiersSpawner : MonoBehaviour
     {
         skierTimer += Time.deltaTime;
 
-        if (skierTimer > 20f)
+        if (skierTimer >= 10f)
         {
             maxEnemies += 2;
-            skierTimer = 0;
+            skierTimer = 0f;
+            Debug.Log("maxEnemies = " + maxEnemies);
 
-            if (minSpawnDelay < 3)
+            if (minSpawnDelay > 3.5f)
             {
                 minSpawnDelay--;
+                Debug.Log("minSpawnDelay = " + minSpawnDelay);
             }
         }
     }
