@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     private Transform transformChildren;
 
+    public static bool canMove = true;
+
     public float moveSpeed;
     public float rotationSpeed;
 
@@ -26,31 +28,40 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical);
 
-        // MOVE AXIS * MOVE SPEED
-        rb.velocity = movement * moveSpeed;
+        if (canMove)
+        {
+            // MOVEMENT
+            rb.velocity = movement * moveSpeed;
 
-        // ROTATION
-        // ROTATES CLOCKWISE (RIGHT)
-        if (moveHorizontal > 0)
-        {
-            transformChildren.RotateAround(circle.transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
+            // ROTATION
+            // ROTATES CLOCKWISE (RIGHT)
+            if (moveHorizontal > 0)
+            {
+                transformChildren.RotateAround(circle.transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
+            }
+            // ROTATES COUNTER-CLOCKWISE (LEFT)
+            if (moveHorizontal < 0)
+            {
+                transformChildren.RotateAround(circle.transform.position, -Vector3.up, rotationSpeed * Time.deltaTime);
+            }
+
+            // ROTATES CLOCKWISE (UP)
+            if (moveVertical > 0)
+            {
+                transformChildren.RotateAround(circle.transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
+            }
+            // ROTATES COUNTER-CLOCKWISE (DOWN)
+            if (moveVertical < 0)
+            {
+                transformChildren.RotateAround(circle.transform.position, -Vector3.up, rotationSpeed * Time.deltaTime);
+            }
         }
-        // ROTATES COUNTER-CLOCKWISE (LEFT)
-        if (moveHorizontal < 0)
+        else
         {
-            transformChildren.RotateAround(circle.transform.position, -Vector3.up, rotationSpeed * Time.deltaTime);
+            rb.velocity = movement * 0;
         }
 
-        // ROTATES CLOCKWISE (UP)
-        if (moveVertical > 0)
-        {
-            transformChildren.RotateAround(circle.transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
-        }
-        // ROTATES COUNTER-CLOCKWISE (DOWN)
-        if (moveVertical < 0)
-        {
-            transformChildren.RotateAround(circle.transform.position, -Vector3.up, rotationSpeed * Time.deltaTime);
-        }
+        
     }
 
     void FixedUpdate()

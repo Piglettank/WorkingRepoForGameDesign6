@@ -55,6 +55,7 @@ public class PlayerShooting : MonoBehaviour
             {
                 // STARTS TIMER WHEN SPACE IS PRESSED
                 actionTimer += Time.deltaTime;
+                PlayerMovement.canMove = false;
 
                 // RANGE INDICATOR
 
@@ -89,6 +90,7 @@ public class PlayerShooting : MonoBehaviour
                 {
                     projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneOnePosition[i].position, Quaternion.Euler(0, 0, 0)) as GameObject;
 
+                    PlayerMovement.canMove = true;
                     bulletCount++;
                     actionTimer = 0f;
 
@@ -107,7 +109,8 @@ public class PlayerShooting : MonoBehaviour
                 for (int i = 0; i < projectileToSpawn.Length; i++)
                 {
                     projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneTwoPosition[i].position, Quaternion.Euler(0, 0, 0)) as GameObject;
-                    
+
+                    PlayerMovement.canMove = true;
                     bulletCount++;
                     actionTimer = 0f;
 
@@ -126,7 +129,8 @@ public class PlayerShooting : MonoBehaviour
                 for (int i = 0; i < 1; i++)
                 {
                     projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneThreePosition[0].position, Quaternion.Euler(0, 0, 0)) as GameObject;
-                    
+
+                    PlayerMovement.canMove = true;
                     bulletCount++;
                     actionTimer = 0f;
 
