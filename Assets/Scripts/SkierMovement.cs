@@ -58,8 +58,6 @@ public class SkierMovement : MonoBehaviour
 			frequency = 2f;
 			magnitude = 2f;
 		}
-
-
 	}
 
 

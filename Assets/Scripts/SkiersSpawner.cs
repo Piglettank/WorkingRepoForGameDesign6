@@ -25,12 +25,13 @@ public class SkiersSpawner : MonoBehaviour
 
     IEnumerator EnemySpawn()
     {
-        while (enemyCount < maxEnemies)
+        while (enemyCount <= maxEnemies)
         {
             xPos = Random.Range(-15, 16);
 
             Instantiate(enemy, new Vector3(xPos, 2, -55 + Random.Range(0,5)), Quaternion.identity);
             enemyCount++;
+            Debug.Log("enemyCount: " + enemyCount);
             yield return new WaitForSeconds(2);
         }
     }
