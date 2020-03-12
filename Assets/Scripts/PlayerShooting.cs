@@ -8,6 +8,8 @@ public class PlayerShooting : MonoBehaviour
     public Transform[] zoneTwoPosition;
     public Transform[] zoneThreePosition;
 
+    private Transform projectileTransform;
+
     public GameObject[] projectileToSpawn;
 
     private GameObject[] projectileToClone;
@@ -100,18 +102,23 @@ public class PlayerShooting : MonoBehaviour
 
                 playerAnimator.SetBool("isCharging", false);
                 playerAnimator.SetBool("isThrowing", true);
+
                 for (int i = 0; i < projectileToSpawn.Length; i++)
                 {
                     projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneOnePosition[i].position, Quaternion.Euler(0, 0, 0)) as GameObject;
-
-
-                    Debug.Log("ZONE 1 FIRED");
                 }
                 // INCREASES THE PROJECTILE SIZE WITH POWER UP
-                for (int j = 0; j < HitIndicator.spreadPower; j++)
-                {
-                    projectileToClone[j].transform.localScale += projectileScaleChange;
-                }
+                //if (HitIndicator.hasPowerUp)
+                //{
+                //    projectileTransform = projectileToSpawn.Length.GetComponentInChildren<Transform>();
+                //    for (int j = 0; j < projectileToSpawn.Length; j++)
+                //    {
+                //        projectileTransform.transform.localScale += projectileScaleChange;
+                //        projectileToClone = new GameObject[projectileToSpawn.Length];
+                //        HitIndicator.hasPowerUp = false;
+                //        Debug.Log("Hello");
+                //    }
+                //}
             }
 
             // ZONE TWO ATTACK
@@ -127,11 +134,6 @@ public class PlayerShooting : MonoBehaviour
                     projectileToClone[i] = Instantiate(projectileToSpawn[i], zoneTwoPosition[i].position, Quaternion.Euler(0, 0, 0)) as GameObject;
 
                     Debug.Log("ZONE 2 FIRED");
-                }
-                // INCREASES THE PROJECTILE SIZE WITH POWER UP
-                for (int j = 0; j < HitIndicator.spreadPower; j++)
-                {
-                    projectileToClone[j].transform.localScale += projectileScaleChange;
                 }
             }
 
@@ -149,17 +151,16 @@ public class PlayerShooting : MonoBehaviour
 
                     Debug.Log("Zone 3 FIRED");
                 }
-                // INCREASES THE PROJECTILE SIZE WITH POWER UP
-                for (int j = 0; j < HitIndicator.spreadPower; j++)
-                {
-                    projectileToClone[j].transform.localScale += projectileScaleChange;
-                }
+                //// INCREASES THE PROJECTILE SIZE WITH POWER UP
+                //for (int j = 0; j < HitIndicator.spreadPower; j++)
+                //{
+                //    projectileToClone[j].transform.localScale += projectileScaleChange;
+                //}
             }
 
             if (startCooldown)
             {
                 cooldownTimer += Time.deltaTime;
-                Debug.Log(cooldownTimer);
                 if (cooldownTimer >= cooldownComplete)
                 {
                     PlayerMovement.canMove = true;
@@ -167,7 +168,6 @@ public class PlayerShooting : MonoBehaviour
                     actionTimer = 0f;
                     cooldownTimer = 0f;
                     startCooldown = false;
-                    Debug.Log("cooldown complete");
                 }
             }
         }

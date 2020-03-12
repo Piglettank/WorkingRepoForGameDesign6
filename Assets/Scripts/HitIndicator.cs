@@ -5,6 +5,7 @@ using UnityEngine;
 public class HitIndicator : MonoBehaviour
 {
     public static int spreadPower = 0;
+    public static bool hasPowerUp = false;
 
     void Start()
     {
@@ -16,6 +17,7 @@ public class HitIndicator : MonoBehaviour
         if (other.gameObject.tag == "skiers")
         {
             SkierMovement.onBeatWait = true;
+            hasPowerUp = true;
             //spreadPower++;
             Debug.Log("SKIER HIT");
         }
