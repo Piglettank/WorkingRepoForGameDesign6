@@ -45,11 +45,18 @@ public class SpreadPowerUp : MonoBehaviour
 
     void Spread()
     {
-        // if (HitIndicator.spreadPower == 2)
-        // TEMPORARY INPUT F
+        // CHEAT CODE BUTTON F
+        // GET SPREADPOWER
         if (Input.GetKeyDown(KeyCode.F))
         {
-            // INCREASE THE SPREAD
+            HitIndicator.spreadPower++;
+        }
+        // IF YOU HIT AN ENEMY YOU GET SPREAD POWER
+        if (HitIndicator.spreadPower > 0)
+        {
+            // SPREAD POWER "RESETS"
+            HitIndicator.spreadPower--;
+            // INCREASE THE SPREAD FOR PLAYERS
             for (int i = 0; i < scaleChange.Length; i++)
             {
                 playerPosition[i].transform.localPosition += scaleChange[i];
@@ -64,12 +71,11 @@ public class SpreadPowerUp : MonoBehaviour
             {
                 rangePositionTwo[i].transform.localPosition += scaleRangeChangeTwo[i];
             }
-            Debug.Log("Increase SPREAD");
+            // INCREASE SIZE OF RANGE INDICATOR
             for (int i = 0; i < rangeIndicator.Length; i++)
             {
                 rangeIndicator[i].transform.localScale += scaleIndicatorChange;
             }
-            //HitIndicator.spreadPower = 2;
         }
     }
 
