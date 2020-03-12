@@ -7,7 +7,7 @@ public class SkierMovement : MonoBehaviour
 	float XmoveSpeed = 1f;
 
 	[SerializeField]
-	float YmoveSpeed = 5f;
+	float YmoveSpeed = 6f;
 
 	[SerializeField]
 	float frequency = 2f;
@@ -37,7 +37,7 @@ public class SkierMovement : MonoBehaviour
 		{
 			particleEffect.SetActive(true);
 			XmoveSpeed = 2f;
-			YmoveSpeed = 1f;
+			YmoveSpeed = 3f;
 			frequency = 6f;
 			magnitude = 1f;
 			MoveRight();
