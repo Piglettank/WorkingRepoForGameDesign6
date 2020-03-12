@@ -26,7 +26,10 @@ public class SkierMovement : MonoBehaviour
 	public GameObject particleEffect2;
 	public GameObject particleEffect3;
 
-    Animator skierAnimator; 
+    Animator skierAnimator;
+	float xPos = 0f;
+	float xPosOld = 0f;
+	float xPosDiff = 0f;
 
 
 	void Start()
@@ -38,11 +41,13 @@ public class SkierMovement : MonoBehaviour
 
     private void Update()
     {
-        //A wrong function to set the animator value
-        skierAnimator.SetFloat("xSpeed", Mathf.Sin(Time.time * frequency) * XmoveSpeed);
-    }
+		xPosOld = xPos;
+		xPos = transform.position.x;
+		xPosDiff = xPosOld - xPos;
+		skierAnimator.SetFloat("xSpeed", xPosDiff);
+	}
 
-    private void FixedUpdate()
+	private void FixedUpdate()
 	{
 		if (onBeatWait) beatTimer += Time.deltaTime;
 
