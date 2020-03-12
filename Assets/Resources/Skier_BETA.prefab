@@ -115,6 +115,7 @@ MonoBehaviour:
   frequency: 2
   magnitude: 2
   onBeat: 0
+  particleEffect: {fileID: 9004280031023707054}
 --- !u!54 &1128066056469631569
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -224,6 +225,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Get High Particle Effect
       objectReference: {fileID: 0}
+    - target: {fileID: 7957838345375754980, guid: 06a0f986b097bed48b895c635c611cdc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7957838345375754981, guid: 06a0f986b097bed48b895c635c611cdc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -291,6 +297,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06a0f986b097bed48b895c635c611cdc, type: 3}
+--- !u!1 &9004280031023707054 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7957838345375754980, guid: 06a0f986b097bed48b895c635c611cdc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1340466488482797898}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9004280031023707055 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7957838345375754981, guid: 06a0f986b097bed48b895c635c611cdc,

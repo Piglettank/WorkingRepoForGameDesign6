@@ -15,7 +15,8 @@ public class HitIndicator : MonoBehaviour
     {
         if (other.gameObject.tag == "skiers")
         {
-            spreadPower++;
+            SkierMovement.onBeatWait = true;
+            //spreadPower++;
             Debug.Log("SKIER HIT");
         }
     }

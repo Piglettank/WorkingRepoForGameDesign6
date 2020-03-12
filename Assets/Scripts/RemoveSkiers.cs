@@ -10,7 +10,6 @@ public class RemoveSkiers : MonoBehaviour
         {
             Destroy(collider.gameObject);
             SkiersSpawner.enemyCount--;
-            Debug.Log("enemyCount--; = " + SkiersSpawner.enemyCount);
         }
     }
 
