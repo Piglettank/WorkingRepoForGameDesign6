@@ -26,15 +26,23 @@ public class SkierMovement : MonoBehaviour
 	public GameObject particleEffect2;
 	public GameObject particleEffect3;
 
+    Animator skierAnimator; 
+
 
 	void Start()
 	{
+        skierAnimator = gameObject.GetComponent<Animator>();
 		pos = transform.position;
 		localScale = transform.localScale;
 	}
 
+    private void Update()
+    {
+        //A wrong function to set the animator value
+        skierAnimator.SetFloat("xSpeed", Mathf.Sin(Time.time * frequency) * XmoveSpeed);
+    }
 
-	private void FixedUpdate()
+    private void FixedUpdate()
 	{
 		if (onBeatWait) beatTimer += Time.deltaTime;
 
