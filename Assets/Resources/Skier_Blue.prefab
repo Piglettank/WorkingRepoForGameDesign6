@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 627120261}
   m_Layer: 0
   m_Name: Get High Start (2)
-  m_TagString: skierBlue
+  m_TagString: skierblue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4767,7 +4767,7 @@ GameObject:
   - component: {fileID: 709637007}
   m_Layer: 0
   m_Name: Get High Start (1)
-  m_TagString: skierBlue
+  m_TagString: skierblue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9521,7 +9521,7 @@ GameObject:
   - component: {fileID: 1387137105}
   m_Layer: 0
   m_Name: Get High Start
-  m_TagString: skierBlue
+  m_TagString: skierblue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14273,7 +14273,7 @@ GameObject:
   - component: {fileID: 1021083344560223477}
   m_Layer: 0
   m_Name: Get High Particle Effect
-  m_TagString: skierBlue
+  m_TagString: skierblue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14313,7 +14313,7 @@ GameObject:
   - component: {fileID: 7744635464879444610}
   m_Layer: 0
   m_Name: Skier_Blue
-  m_TagString: skierBlue
+  m_TagString: skierblue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14465,7 +14465,7 @@ GameObject:
   - component: {fileID: 6658217058371625980}
   m_Layer: 0
   m_Name: Skier Sprite
-  m_TagString: skierBlue
+  m_TagString: skierblue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14554,7 +14554,7 @@ PrefabInstance:
     - target: {fileID: 7957838345375754980, guid: 06a0f986b097bed48b895c635c611cdc,
         type: 3}
       propertyPath: m_TagString
-      value: skierBlue
+      value: skierblue
       objectReference: {fileID: 0}
     - target: {fileID: 7957838345375754981, guid: 06a0f986b097bed48b895c635c611cdc,
         type: 3}

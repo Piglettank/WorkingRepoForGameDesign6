@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class SkiersSpawner : MonoBehaviour
 {
-    public GameObject enemy;
+    public GameObject[] skiers = new GameObject[4];
+    int skierTypes = 0;
+    int lastSkierType = 0;
+    int sameTypeCount = 0;
 
     private float xPos;
     private float zPos;
 
     public static int enemyCount;
-    private int maxEnemies = 1;
+    private int maxSkiers = 1;
 
     private float skierMaxTimer;
     private float skierSpawnTimer;
@@ -20,7 +23,7 @@ public class SkiersSpawner : MonoBehaviour
 
     void Start()
     {
-        maxEnemies = 3;
+        maxSkiers = 3;
         delay = 5f;
     }
 
@@ -34,16 +37,27 @@ public class SkiersSpawner : MonoBehaviour
 
         if (skierSpawnTimer >= delay)
         {
-            if (enemyCount < maxEnemies)
+            if (enemyCount < maxSkiers)
             {
                 skierSpawnTimer = 0f;
 
                 xPos = Random.Range(-15, 16);
                 zPos = -55 + Random.Range(-7, 8);
 
-                Instantiate(enemy, new Vector3(xPos, 2, zPos), Quaternion.identity);
+                //RANDOMLY GENERATE A SKIER TYPE, CAN'T SPAWN THE SAME TYPE 3 TIMES IN A ROW 
+                do
+                {
+                    skierTypes = Random.Range(0, 4);
+
+                    if (skierTypes == lastSkierType) sameTypeCount++;
+                    else sameTypeCount = 0;
+                } while (sameTypeCount > 3);
+
+                lastSkierType = skierTypes;
+
+                //SPAWN A SKIER
+                Instantiate(skiers[skierTypes], new Vector3(xPos, 2, zPos), Quaternion.identity);
                 enemyCount++;
-                //Debug.Log("enemyCount: " + enemyCount);
             }
         }
 
@@ -51,8 +65,7 @@ public class SkiersSpawner : MonoBehaviour
         {
             skierMaxTimer = 0f;
 
-            maxEnemies += 2;
-            //Debug.Log("maxEnemies added, equals: " + maxEnemies);
+            maxSkiers += 2;
 
             if (delay > 3.5f)
             {
