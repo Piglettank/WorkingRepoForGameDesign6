@@ -6,23 +6,23 @@ public class HitIndicator : MonoBehaviour
 {
     public static int spreadPower = 0;
 
-    void Start()
-    {
-        
-    }
+    CapsuleCollider skierCollider;
+
+    bool playedCocaine = false;
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "skiers")
         {
-            SkierMovement.onBeatWait = true;
-            //spreadPower++;
-            Debug.Log("SKIER HIT");
-        }
-    }
+            SkierMovement skier = other.GetComponent<SkierMovement>();
+            skier.onBeatWait = true;
 
-    void Update()
-    {
-        
+            SoundManagerGucci.PlaySound(SoundManagerGucci.SoundGucci.cocaine);
+            skier.playedCocaine = true;
+
+            skierCollider = other.gameObject.GetComponent<CapsuleCollider>();
+            skierCollider.enabled = false;
+            //spreadPower++;
+        }
     }
 }

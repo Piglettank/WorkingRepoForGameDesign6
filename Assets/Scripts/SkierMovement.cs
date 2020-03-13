@@ -19,7 +19,7 @@ public class SkierMovement : MonoBehaviour
 
 	float beatTimer = 0;
 	public bool onBeat = false;
-	public static bool onBeatWait = false;
+	[HideInInspector] public bool onBeatWait = false;
 
 	public GameObject particleEffect0;
 	public GameObject particleEffect1;
@@ -31,10 +31,18 @@ public class SkierMovement : MonoBehaviour
 	float xPosOld = 0f;
 	float xPosDiff = 0f;
 
+	[HideInInspector] public bool playedCocaine = false;
+	void MoveRight()
+	{
+		pos += -transform.forward * Time.deltaTime * YmoveSpeed;
+		transform.position = pos + transform.right * Mathf.Sin(Time.time * frequency) * XmoveSpeed * magnitude;
+	}
+
 
 	void Start()
 	{
         skierAnimator = gameObject.GetComponent<Animator>();
+
 		pos = transform.position;
 		localScale = transform.localScale;
 	}
@@ -49,15 +57,22 @@ public class SkierMovement : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+		//UPDATE TIMER
 		if (onBeatWait) beatTimer += Time.deltaTime;
 
-		if (onBeat)
+
+		//PLAY THE PARTICLE EFFECT AFTER THE 'COCAINE!' SOUND HAS BEEN PLAYED
+		if (playedCocaine)
 		{
 			particleEffect0.SetActive(true);
 			particleEffect1.SetActive(true);
 			particleEffect2.SetActive(true);
 			particleEffect3.SetActive(true);
+		}
 
+		//MOVE TO THE BEAT
+		if (onBeat)
+		{
 			XmoveSpeed = 2f;
 			YmoveSpeed = 3f;
 			frequency = 6f;
@@ -66,26 +81,21 @@ public class SkierMovement : MonoBehaviour
 		}
 
 		
-		if (onBeatWait && beatTimer % 0.5 <= 0.1f)
+		//AJDUST TO THE RHYTHM
+
+		if (onBeatWait && beatTimer % 0.5 <= 0.1f) //ADJUSTED
 		{
 			MoveRight();
 			onBeat = true;
 			onBeatWait = false;
 			beatTimer = 0f;
 		}
-		else
+		else //ADJUSTING
 		{
 			MoveRight();
 			XmoveSpeed = 1f;
 			frequency = 2f;
 			magnitude = 2f;
 		}
-	}
-
-
-	void MoveRight()
-	{
-		pos += -transform.forward * Time.deltaTime * YmoveSpeed;
-		transform.position = pos + transform.right * Mathf.Sin(Time.time * frequency) * XmoveSpeed * magnitude;
 	}
 }

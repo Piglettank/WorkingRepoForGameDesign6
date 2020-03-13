@@ -7,6 +7,8 @@ public static class SoundManagerGucci
     public enum SoundGucci
     {
          gucciSong,
+         cocaine,
+         cocaineUUU,
     }
 
     private static GameObject soundGameObject;
