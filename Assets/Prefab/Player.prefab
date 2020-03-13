@@ -594,10 +594,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5172879945250403315}
   - component: {fileID: 587756117051244247}
-  - component: {fileID: 496899576574279123}
   - component: {fileID: 1052105929}
   - component: {fileID: 1052105928}
   - component: {fileID: 366404}
+  - component: {fileID: 7481394827466966441}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -653,36 +653,6 @@ MonoBehaviour:
   - {fileID: 8544204780425714453}
   - {fileID: 5719145237922584918}
   spreadIncrease: 0.1
---- !u!114 &496899576574279123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5172879945250403312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97e94fbe00bb80e499d23af05de74def, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zoneOnePosition:
-  - {fileID: 5172879944438489939}
-  - {fileID: 5172879946325588353}
-  - {fileID: 5172879946305086053}
-  zoneTwoPosition:
-  - {fileID: 5172879945720830112}
-  - {fileID: 5172879946252265753}
-  - {fileID: 5172879944915980434}
-  zoneThreePosition:
-  - {fileID: 5172879945827563209}
-  projectileToSpawn:
-  - {fileID: 4046658038357342513, guid: 8da709f2915db4b4d9f041d2982c6ac8, type: 3}
-  - {fileID: 4046658038357342513, guid: 8da709f2915db4b4d9f041d2982c6ac8, type: 3}
-  - {fileID: 4046658038357342513, guid: 8da709f2915db4b4d9f041d2982c6ac8, type: 3}
-  bulletCount: 0
-  cooldownComplete: 0.75
-  zoneTwoTimer: 1.5
-  zoneThreeTimer: 3
 --- !u!95 &1052105929
 Animator:
   serializedVersion: 3
@@ -745,6 +715,21 @@ MonoBehaviour:
   cooldownComplete: 1
   zoneTwoTimer: 1.5
   zoneThreeTimer: 3
+--- !u!114 &7481394827466966441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5172879945250403312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 705721de78205834f985a86b1f4e8d0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orbParticle: {fileID: 0}
+  snowParticle: {fileID: 0}
+  size: 10
 --- !u!1 &5172879945507640289
 GameObject:
   m_ObjectHideFlags: 0

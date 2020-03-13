@@ -128,6 +128,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 366404, guid: 4692ea21858e05b42867d0dc3acf9a8d, type: 3}
+      propertyPath: projectileToSpawn
+      value: 
+      objectReference: {fileID: 4046658038357342513, guid: 8da709f2915db4b4d9f041d2982c6ac8,
+        type: 3}
+    - target: {fileID: 5172879944438489948, guid: 4692ea21858e05b42867d0dc3acf9a8d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172879944915980445, guid: 4692ea21858e05b42867d0dc3acf9a8d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5172879945250403312, guid: 4692ea21858e05b42867d0dc3acf9a8d,
         type: 3}
       propertyPath: m_Name
@@ -187,6 +202,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172879945720830115, guid: 4692ea21858e05b42867d0dc3acf9a8d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172879945827563208, guid: 4692ea21858e05b42867d0dc3acf9a8d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172879946252265752, guid: 4692ea21858e05b42867d0dc3acf9a8d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172879946305086052, guid: 4692ea21858e05b42867d0dc3acf9a8d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172879946325588352, guid: 4692ea21858e05b42867d0dc3acf9a8d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4692ea21858e05b42867d0dc3acf9a8d, type: 3}
@@ -896,7 +936,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 6658217057397461589, guid: 41b31a5123e821949877d9f1985299ec, type: 3}
-  maxEnemies: 0
 --- !u!4 &838138012
 Transform:
   m_ObjectHideFlags: 0
@@ -1940,7 +1979,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 6658217057397461589, guid: 41b31a5123e821949877d9f1985299ec, type: 3}
-  maxEnemies: 0
 --- !u!114 &1370353858
 MonoBehaviour:
   m_ObjectHideFlags: 0

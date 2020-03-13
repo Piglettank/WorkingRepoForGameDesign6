@@ -5,6 +5,7 @@ using UnityEngine;
 public class HitIndicator : MonoBehaviour
 {
     public static int spreadPower = 0;
+    public static bool hasPowerUp = false;
 
     CapsuleCollider skierCollider;
 
@@ -22,7 +23,11 @@ public class HitIndicator : MonoBehaviour
 
             skierCollider = other.gameObject.GetComponent<CapsuleCollider>();
             skierCollider.enabled = false;
-            //spreadPower++;
+            spreadPower++;
+
+            hasPowerUp = true;
+            spreadPower++;
+
         }
     }
 }

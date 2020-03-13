@@ -51,7 +51,7 @@ public class SkierMovement : MonoBehaviour
     {
 		xPosOld = xPos;
 		xPos = transform.position.x;
-		xPosDiff = xPosOld - xPos;
+		xPosDiff = (xPosOld - xPos) * 10;
 		skierAnimator.SetFloat("xSpeed", xPosDiff);
 	}
 
@@ -59,11 +59,18 @@ public class SkierMovement : MonoBehaviour
 	{
 		//UPDATE TIMER
 		if (onBeatWait) beatTimer += Time.deltaTime;
+        xPosOld = xPos;
+        xPos = transform.position.x;
+        xPosDiff = (xPos - xPosOld) * 10;
+        //xPosDiff = (xPosOld - xPos) * 10;
+        skierAnimator.SetFloat("xSpeed", xPosDiff);
 
+        if (onBeatWait) beatTimer += Time.deltaTime;
 
 		//PLAY THE PARTICLE EFFECT AFTER THE 'COCAINE!' SOUND HAS BEEN PLAYED
 		if (playedCocaine)
 		{
+            skierAnimator.SetBool("isHigh", true);
 			particleEffect0.SetActive(true);
 			particleEffect1.SetActive(true);
 			particleEffect2.SetActive(true);
@@ -79,6 +86,10 @@ public class SkierMovement : MonoBehaviour
 			magnitude = 1f;
 			MoveRight();
 		}
+        else
+        {
+            skierAnimator.SetBool("isHigh", false);
+        }
 
 		
 		//AJDUST TO THE RHYTHM

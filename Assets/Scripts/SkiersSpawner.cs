@@ -43,7 +43,7 @@ public class SkiersSpawner : MonoBehaviour
 
                 Instantiate(enemy, new Vector3(xPos, 2, zPos), Quaternion.identity);
                 enemyCount++;
-                Debug.Log("enemyCount: " + enemyCount);
+                //Debug.Log("enemyCount: " + enemyCount);
             }
         }
 
@@ -52,7 +52,7 @@ public class SkiersSpawner : MonoBehaviour
             skierMaxTimer = 0f;
 
             maxEnemies += 2;
-            Debug.Log("maxEnemies added, equals: " + maxEnemies);
+            //Debug.Log("maxEnemies added, equals: " + maxEnemies);
 
             if (delay > 3.5f)
             {

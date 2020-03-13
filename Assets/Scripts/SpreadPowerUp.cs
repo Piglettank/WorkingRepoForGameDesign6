@@ -50,11 +50,12 @@ public class SpreadPowerUp : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             HitIndicator.spreadPower++;
+            HitIndicator.hasPowerUp = true;
         }
+
         // IF YOU HIT AN ENEMY YOU GET SPREAD POWER
-        if (HitIndicator.spreadPower > 0)
+        if (HitIndicator.spreadPower >= 1)
         {
-            // SPREAD POWER "RESETS"
             HitIndicator.spreadPower--;
             // INCREASE THE SPREAD FOR PLAYERS
             for (int i = 0; i < scaleChange.Length; i++)
