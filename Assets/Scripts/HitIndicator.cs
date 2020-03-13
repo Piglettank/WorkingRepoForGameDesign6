@@ -5,6 +5,8 @@ using UnityEngine;
 public class HitIndicator : MonoBehaviour
 {
     public static int spreadPower = 0;
+    public static int rotationPower = 0;
+
     public static bool hasPowerUp = false;
 
     CapsuleCollider skierCollider;
@@ -26,6 +28,7 @@ public class HitIndicator : MonoBehaviour
 
             hasPowerUp = true;
             spreadPower++;
+            rotationPower++;
         }
     }
 }

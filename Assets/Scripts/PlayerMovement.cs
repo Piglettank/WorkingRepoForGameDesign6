@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float moveSpeed;
     public float rotationSpeed;
+    public float rotationSpeedIncrement = 50f;
 
     void Start()
     {
@@ -60,12 +61,29 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = movement * 0;
         }
+    }
 
-        
+    void RotationPowerUp()
+    {
+        // CHEAT CODE 
+        // KEY G
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            HitIndicator.rotationPower++;
+        }
+
+        if (HitIndicator.rotationPower >= 1)
+        {
+            HitIndicator.rotationPower--;
+            rotationSpeed = rotationSpeed + rotationSpeedIncrement;
+            Debug.Log(rotationSpeed);
+
+        }
     }
 
     void FixedUpdate()
     {
         Movement();
+        RotationPowerUp();
     }
 }
