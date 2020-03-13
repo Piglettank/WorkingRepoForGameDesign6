@@ -8,6 +8,9 @@ TagManager:
   - Wall
   - skiers
   - Bullet
+  - skierBlue
+  - skierGreen
+  - skierRed
   layers:
   - Default
   - TransparentFX

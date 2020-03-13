@@ -47,25 +47,18 @@ public class SkierMovement : MonoBehaviour
 		localScale = transform.localScale;
 	}
 
-    private void Update()
-    {
-		xPosOld = xPos;
-		xPos = transform.position.x;
-		xPosDiff = (xPosOld - xPos) * 10;
-		skierAnimator.SetFloat("xSpeed", xPosDiff);
-	}
-
 	private void FixedUpdate()
 	{
 		//UPDATE TIMER
 		if (onBeatWait) beatTimer += Time.deltaTime;
+
+
+		//ADJUST SPRITE FOR LEFT/RIGHT MOVEMENT
         xPosOld = xPos;
         xPos = transform.position.x;
         xPosDiff = (xPos - xPosOld) * 10;
-        //xPosDiff = (xPosOld - xPos) * 10;
         skierAnimator.SetFloat("xSpeed", xPosDiff);
 
-        if (onBeatWait) beatTimer += Time.deltaTime;
 
 		//PLAY THE PARTICLE EFFECT AFTER THE 'COCAINE!' SOUND HAS BEEN PLAYED
 		if (playedCocaine)
