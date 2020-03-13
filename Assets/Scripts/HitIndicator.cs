@@ -18,7 +18,7 @@ public class HitIndicator : MonoBehaviour
         {
             SkierMovement.onBeatWait = true;
             hasPowerUp = true;
-            //spreadPower++;
+            spreadPower++;
             Debug.Log("SKIER HIT");
         }
     }
