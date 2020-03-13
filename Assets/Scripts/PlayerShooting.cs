@@ -28,7 +28,7 @@ public class PlayerShooting : MonoBehaviour
     private float actionTimer = 0f;
 
     private float cooldownTimer = 0f;
-    private float cooldownComplete = 0.75f;
+    private float cooldownComplete = 1.5f;
 
     private float zoneTwoTimer = 1.5f;
     private float zoneThreeTimer = 3f;
