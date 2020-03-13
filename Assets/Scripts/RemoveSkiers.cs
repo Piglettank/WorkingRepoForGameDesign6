@@ -6,11 +6,10 @@ public class RemoveSkiers : MonoBehaviour
 {
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.tag == "skiers")
+        if (collider.gameObject.CompareTag("skierblue"))
         {
             Destroy(collider.gameObject);
             SkiersSpawner.enemyCount--;
-            //Debug.Log("enemyCount: " + SkiersSpawner.enemyCount);
         }
     }
 

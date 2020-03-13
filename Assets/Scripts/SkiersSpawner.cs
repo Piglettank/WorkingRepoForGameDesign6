@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SkiersSpawner : MonoBehaviour
 {
-    public GameObject[] skiers = new GameObject[3];
+    public GameObject[] skiers = new GameObject[4];
     int skierTypes = 0;
     int lastSkierType = 0;
     int sameTypeCount = 0;
@@ -47,11 +47,10 @@ public class SkiersSpawner : MonoBehaviour
                 //RANDOMLY GENERATE A SKIER TYPE, CAN'T SPAWN THE SAME TYPE 3 TIMES IN A ROW 
                 do
                 {
-                    skierTypes = Random.Range(0, 3);
+                    skierTypes = Random.Range(0, 4);
 
                     if (skierTypes == lastSkierType) sameTypeCount++;
                     else sameTypeCount = 0;
-                    Debug.Log(sameTypeCount);
                 } while (sameTypeCount > 3);
 
                 lastSkierType = skierTypes;

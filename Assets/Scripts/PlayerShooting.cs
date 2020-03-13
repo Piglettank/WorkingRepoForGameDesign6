@@ -181,7 +181,7 @@ public class PlayerShooting : MonoBehaviour
                     for (int j = 0; j < projectileToClone.Length; j++)
                     {
                         projectileToClone[j] = Instantiate(projectileToSpawn, zoneThreePosition[j].position, Quaternion.Euler(0, 0, 0)) as GameObject;
-                        Debug.Log("POWER UP");
+                        //Debug.Log("POWER UP");
 
                     }
                     projectileToSpawn.transform.localScale += projectileScaleChange;
@@ -194,7 +194,7 @@ public class PlayerShooting : MonoBehaviour
         if (startCooldown)
         {
             cooldownTimer += Time.deltaTime;
-            Debug.Log(cooldownTimer);
+            //Debug.Log(cooldownTimer);
 
             if (cooldownTimer >= cooldownComplete)
             {
@@ -203,7 +203,7 @@ public class PlayerShooting : MonoBehaviour
                 actionTimer = 0f;
                 cooldownTimer = 0f;
                 startCooldown = false;
-                Debug.Log("bajs");
+                //Debug.Log("bajs");
                 bulletCount++;
             }
         }
