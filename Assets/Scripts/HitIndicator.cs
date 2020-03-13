@@ -23,11 +23,9 @@ public class HitIndicator : MonoBehaviour
 
             skierCollider = other.gameObject.GetComponent<CapsuleCollider>();
             skierCollider.enabled = false;
-            spreadPower++;
 
             hasPowerUp = true;
             spreadPower++;
-
         }
     }
 }

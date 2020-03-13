@@ -14,23 +14,24 @@ public class PlayerShooting : MonoBehaviour
     private Animator playerAnimator;
 
     private Vector3 projectileScaleChange;
+    private Vector3 projectileScaleZoneThree;
 
     public static bool rangeIndicatorOne = false;
     public static bool rangeIndicatorTwo = false;
     public static bool rangeIndicatorThree = false;
 
-    public int bulletCount = 0;
+    private int bulletCount = 1;
 
-    private float projectileScale = 0.5f;
-    private float actionComplete = 2f;
-    private float bulletDestroyTimer = 0f;
+    public float projectileThreeScale = 1f;
+    public float projectileScale = 0.5f;
+
     private float actionTimer = 0f;
 
     private float cooldownTimer = 0f;
-    public float cooldownComplete = 0.75f;
+    private float cooldownComplete = 0.75f;
 
-    public float zoneTwoTimer = 1.5f;
-    public float zoneThreeTimer = 3f;
+    private float zoneTwoTimer = 1.5f;
+    private float zoneThreeTimer = 3f;
 
     private bool hasBullet = true;
     private bool startCooldown = false;
@@ -43,22 +44,13 @@ public class PlayerShooting : MonoBehaviour
         projectileToClone = new GameObject[3];
 
         projectileScaleChange = new Vector3(projectileScale, 0f, projectileScale);
+        projectileScaleZoneThree = new Vector3(projectileThreeScale, 0f, projectileThreeScale);
 
         playerAnimator = gameObject.GetComponent<Animator>();
     }
 
     void Shooting()
     {
-        // CHECKS IF PLAYER CAN SHOOT OR NOT
-        if (bulletCount < 1)
-        {
-            hasBullet = true;
-        }
-        else
-        {
-            hasBullet = false;
-        }
-
         // IF THE PLAYER CAN SHOOT
         if (hasBullet)
         {
@@ -98,6 +90,7 @@ public class PlayerShooting : MonoBehaviour
             // ZONE ONE ATTACK
             if (Input.GetKeyUp(KeyCode.Space) && actionTimer < zoneTwoTimer)
             {
+                hasBullet = false;
                 startCooldown = true;
                 PlayerMovement.canMove = false;
 
@@ -131,6 +124,7 @@ public class PlayerShooting : MonoBehaviour
             // ZONE TWO ATTACK
             if (Input.GetKeyUp(KeyCode.Space) && actionTimer >= zoneTwoTimer && actionTimer < zoneThreeTimer)
             {
+                hasBullet = false;
                 startCooldown = true;
                 PlayerMovement.canMove = false;
 
@@ -159,55 +153,58 @@ public class PlayerShooting : MonoBehaviour
                     HitIndicator.hasPowerUp = false;
                     Debug.Log(projectileToSpawn.transform.localScale);
                 }
-
-                // ZONE THREE ATTACK
-                if (Input.GetKeyUp(KeyCode.Space) && actionTimer >= zoneThreeTimer)
-                {
-                    startCooldown = true;
-                    PlayerMovement.canMove = false;
-
-                    playerAnimator.SetBool("isCharging", false);
-                    playerAnimator.SetBool("isThrowing", true);
-
-                    if (!HitIndicator.hasPowerUp)
-                    {
-                        for (int i = 0; i < projectileToClone.Length; i++)
-                        {
-                            projectileToClone[i] = Instantiate(projectileToSpawn, zoneThreePosition[i].position, Quaternion.Euler(0, 0, 0)) as GameObject;
-                            Debug.Log(projectileToClone[i].transform.localScale);
-                        }
-                    }
-
-                    //INCREASES THE PROJECTILE SIZE WITH POWER UP
-                    if (HitIndicator.hasPowerUp)
-                    {
-                        for (int j = 0; j < projectileToClone.Length; j++)
-                        {
-                            projectileToClone[j] = Instantiate(projectileToSpawn, zoneThreePosition[j].position, Quaternion.Euler(0, 0, 0)) as GameObject;
-                            Debug.Log("POWER UP");
-
-                        }
-                        projectileToSpawn.transform.localScale += projectileScaleChange;
-                        HitIndicator.hasPowerUp = false;
-                        Debug.Log(projectileToSpawn.transform.localScale);
-                    }
-                }
             }
 
-            if (startCooldown)
+            // ZONE THREE ATTACK
+            if (Input.GetKeyUp(KeyCode.Space) && actionTimer >= zoneThreeTimer)
             {
-                cooldownTimer += Time.deltaTime;
-                Debug.Log(cooldownTimer);
+                hasBullet = false;
+                startCooldown = true;
+                PlayerMovement.canMove = false;
 
-                if (cooldownTimer >= cooldownComplete)
+                playerAnimator.SetBool("isCharging", false);
+                playerAnimator.SetBool("isThrowing", true);
+
+                if (!HitIndicator.hasPowerUp)
                 {
-                    PlayerMovement.canMove = true;
-                    bulletCount++;
-                    actionTimer = 0f;
-                    cooldownTimer = 0f;
-                    startCooldown = false;
-                    Debug.Log("bajs");
+                    for (int i = 0; i < projectileToClone.Length; i++)
+                    {
+                        projectileToClone[i] = Instantiate(projectileToSpawn, zoneThreePosition[i].position, Quaternion.Euler(0, 0, 0)) as GameObject;
+                        projectileToClone[i].transform.localScale += projectileScaleZoneThree;
+                        Debug.Log("what the dicks");
+                    }
                 }
+
+                //INCREASES THE PROJECTILE SIZE WITH POWER UP
+                if (HitIndicator.hasPowerUp)
+                {
+                    for (int j = 0; j < projectileToClone.Length; j++)
+                    {
+                        projectileToClone[j] = Instantiate(projectileToSpawn, zoneThreePosition[j].position, Quaternion.Euler(0, 0, 0)) as GameObject;
+                        Debug.Log("POWER UP");
+
+                    }
+                    projectileToSpawn.transform.localScale += projectileScaleChange;
+                    HitIndicator.hasPowerUp = false;
+                    Debug.Log(projectileToSpawn.transform.localScale);
+                }
+            }
+        }
+
+        if (startCooldown)
+        {
+            cooldownTimer += Time.deltaTime;
+            Debug.Log(cooldownTimer);
+
+            if (cooldownTimer >= cooldownComplete)
+            {
+                PlayerMovement.canMove = true;
+                hasBullet = true;
+                actionTimer = 0f;
+                cooldownTimer = 0f;
+                startCooldown = false;
+                Debug.Log("bajs");
+                bulletCount++;
             }
         }
     }
@@ -216,19 +213,11 @@ public class PlayerShooting : MonoBehaviour
     {
         if (bulletCount >= 1)
         {
-            // STARTS THE TIMER
-            bulletDestroyTimer += Time.deltaTime;
-
-            // 2 SECONDS UNTIL DESTROYED
-            if (bulletDestroyTimer >= actionComplete)
+            for (int i = 0; i < projectileToClone.Length; i++)
             {
-                for (int i = 0; i < projectileToClone.Length; i++)
-                {
-                    Destroy(projectileToClone[i]);
-                }
-                bulletCount = 0;
-                bulletDestroyTimer = 0f;
+                Destroy(projectileToClone[i]);
             }
+            bulletCount = 0;
         }
     }
  
