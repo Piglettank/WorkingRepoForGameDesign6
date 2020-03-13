@@ -9,8 +9,6 @@ public class HitIndicator : MonoBehaviour
 
     CapsuleCollider skierCollider;
 
-    bool playedCocaine = false;
-
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "skierBlue" && other.gameObject.tag == "skierGreen" && other.gameObject.tag == "skierRed")
