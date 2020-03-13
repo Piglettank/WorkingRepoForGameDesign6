@@ -13,7 +13,7 @@ public class HitIndicator : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "skiers")
+        if (other.gameObject.tag == "skierBlue" && other.gameObject.tag == "skierGreen" && other.gameObject.tag == "skierRed")
         {
             SkierMovement skier = other.GetComponent<SkierMovement>();
             skier.onBeatWait = true;
