@@ -171,7 +171,6 @@ public class PlayerShooting : MonoBehaviour
                     {
                         projectileToClone[i] = Instantiate(projectileToSpawn, zoneThreePosition[i].position, Quaternion.Euler(0, 0, 0)) as GameObject;
                         projectileToClone[i].transform.localScale += projectileScaleZoneThree;
-                        Debug.Log("what the dicks");
                     }
                 }
 
@@ -194,16 +193,19 @@ public class PlayerShooting : MonoBehaviour
         if (startCooldown)
         {
             cooldownTimer += Time.deltaTime;
-            //Debug.Log(cooldownTimer);
 
             if (cooldownTimer >= cooldownComplete)
             {
                 PlayerMovement.canMove = true;
+
+                // PUT IDLE ANIMATION HERE
+                playerAnimator.SetBool("isCharging", false);
+                playerAnimator.SetBool("isThrowing", false);
+
                 hasBullet = true;
                 actionTimer = 0f;
                 cooldownTimer = 0f;
                 startCooldown = false;
-                //Debug.Log("bajs");
                 bulletCount++;
             }
         }
