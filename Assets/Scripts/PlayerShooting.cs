@@ -199,6 +199,8 @@ public class PlayerShooting : MonoBehaviour
                 PlayerMovement.canMove = true;
 
                 // PUT IDLE ANIMATION HERE
+                playerAnimator.SetBool("isCharging", false);
+                playerAnimator.SetBool("isThrowing", false);
 
                 hasBullet = true;
                 actionTimer = 0f;
