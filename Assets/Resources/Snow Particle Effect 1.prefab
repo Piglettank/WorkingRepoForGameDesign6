@@ -4796,7 +4796,7 @@ Transform:
   m_GameObject: {fileID: 4046658038357342513}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.5, y: 1, z: 3.5}
+  m_LocalScale: {x: 4.5, y: 1, z: 4.5}
   m_Children:
   - {fileID: 316765352898554596}
   - {fileID: 6774554957431595998}
@@ -4909,6 +4909,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 733d5c1bd74e33c46970b9fa43ab8c29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skierBlue: {fileID: 6658217057397461589, guid: 9690e7d2e9cccb742b8bb9fc17b99976,
+    type: 3}
+  skierGreen: {fileID: 6658217057397461589, guid: 6d5c8fc37be946a44a12e10909003c31,
+    type: 3}
+  skierRed: {fileID: 6658217057397461589, guid: 8dd8a5c6994817740bb1cbbab2435634,
+    type: 3}
 --- !u!1 &6774554957431595995
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,10 +6,17 @@ public class HitIndicator : MonoBehaviour
 {
     public static int spreadPower = 0;
     public static int rotationPower = 0;
+    private Vector3 skierSize = new Vector3(1, 1, 1);
 
     public static bool hasPowerUp = false;
-
+    public static bool increaseSize = false;
+    public static int increasedSize = 0;
     CapsuleCollider skierCollider;
+
+    public GameObject skierBlue;
+    public GameObject skierGreen;
+    public GameObject skierRed;
+
 
     void GetHigh(ref Collider other)
     {
@@ -39,6 +46,7 @@ public class HitIndicator : MonoBehaviour
         if (other.gameObject.CompareTag("skierblue"))
         {
             GetHigh(ref other);
+            
 
             hasPowerUp = true;
             //POWER UP
@@ -48,8 +56,12 @@ public class HitIndicator : MonoBehaviour
         if (other.gameObject.CompareTag("skierred"))
         {
             GetHigh(ref other);
-
-            hasPowerUp = true; 
+            
+            increaseSize = true;
+            increasedSize++;
+            //skierBlue.transform.localScale += skierSize;
+            //skierGreen.transform.localScale += skierSize;
+            //skierRed.transform.localScale += skierSize;
         }
     }
 }

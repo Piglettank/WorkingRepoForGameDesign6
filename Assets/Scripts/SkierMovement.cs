@@ -25,6 +25,7 @@ public class SkierMovement : MonoBehaviour
 	public GameObject particleEffect1;
 	public GameObject particleEffect2;
 	public GameObject particleEffect3;
+	public GameObject particleEffect4;
 
     Animator skierAnimator;
 	float xPos = 0f;
@@ -32,11 +33,17 @@ public class SkierMovement : MonoBehaviour
 	float xPosDiff = 0f;
 
 	[HideInInspector] public bool playedCocaine = false;
+	[HideInInspector] public bool growBigger = false;
+
+
+
 	void MoveRight()
 	{
 		pos += -transform.forward * Time.deltaTime * YmoveSpeed;
+
 		transform.position = pos + transform.right * Mathf.Sin(Time.time * frequency) * XmoveSpeed * magnitude;
 	}
+
 
 
 	void Start()
@@ -70,6 +77,12 @@ public class SkierMovement : MonoBehaviour
 			particleEffect3.SetActive(true);
 		}
 
+		//PLAY THE PARTICLE EFFECT WHEN SKIERS GROW BIGGER
+		if (growBigger)
+		{
+			particleEffect4.SetActive(true);
+		}
+
 		//MOVE TO THE BEAT
 		if (onBeat)
 		{
@@ -86,7 +99,6 @@ public class SkierMovement : MonoBehaviour
 
 		
 		//AJDUST TO THE RHYTHM
-
 		if (onBeatWait && beatTimer % 0.5 <= 0.1f) //ADJUSTED
 		{
 			MoveRight();
