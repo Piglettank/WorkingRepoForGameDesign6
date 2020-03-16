@@ -11,23 +11,45 @@ public class HitIndicator : MonoBehaviour
 
     CapsuleCollider skierCollider;
 
+    void GetHigh(ref Collider other)
+    {
+        SkierMovement skier = other.GetComponent<SkierMovement>();
+        skier.onBeatWait = true;
+
+        SoundManagerGucci.PlaySound(SoundManagerGucci.SoundGucci.cocaine);
+        skier.playedCocaine = true;
+
+        skierCollider = other.gameObject.GetComponent<CapsuleCollider>();
+        skierCollider.enabled = false;
+    }
+
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("skierblue") || other.gameObject.CompareTag("skierblue") || other.gameObject.CompareTag("skierblue") || other.gameObject.CompareTag("skiers"))
+        //POWER UP 1 - GREATER RANGE
+        if (other.gameObject.CompareTag("skiergreen"))
         {
-            Debug.Log("!!!!!!!!!!!!!!!!!!!!!!!skierhit!!!!!!!!!!!!");
-            SkierMovement skier = other.GetComponent<SkierMovement>();
-            skier.onBeatWait = true;
-
-            SoundManagerGucci.PlaySound(SoundManagerGucci.SoundGucci.cocaine);
-            skier.playedCocaine = true;
-
-            skierCollider = other.gameObject.GetComponent<CapsuleCollider>();
-            skierCollider.enabled = false;
+            GetHigh(ref other);
 
             hasPowerUp = true;
             spreadPower++;
             rotationPower++;
+        }
+
+        //POWER UP 2 - FASTER ROTATION
+        if (other.gameObject.CompareTag("skierblue"))
+        {
+            GetHigh(ref other);
+
+            hasPowerUp = true;
+            //POWER UP
+        }
+
+        //POWER UP 3 - BIGGER SKIERS
+        if (other.gameObject.CompareTag("skierred"))
+        {
+            GetHigh(ref other);
+
+            hasPowerUp = true; 
         }
     }
 }
