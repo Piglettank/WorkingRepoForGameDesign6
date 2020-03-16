@@ -32,24 +32,20 @@ public class HitIndicator : MonoBehaviour
 
             hasPowerUp = true;
             spreadPower++;
-            rotationPower++;
+            rotationPower--;
         }
 
         //POWER UP 2 - FASTER ROTATION
         if (other.gameObject.CompareTag("skierblue"))
         {
             GetHigh(ref other);
-
-            hasPowerUp = true;
-            //POWER UP
+            rotationPower++;
         }
 
         //POWER UP 3 - BIGGER SKIERS
         if (other.gameObject.CompareTag("skierred"))
         {
             GetHigh(ref other);
-
-            hasPowerUp = true; 
         }
     }
 }

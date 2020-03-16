@@ -1619,6 +1619,7 @@ MonoBehaviour:
   circle: {fileID: 5172879946480753339}
   moveSpeed: 15
   rotationSpeed: 200
+  rotationSpeedIncrement: 50
 --- !u!65 &5172879946480753338
 BoxCollider:
   m_ObjectHideFlags: 0

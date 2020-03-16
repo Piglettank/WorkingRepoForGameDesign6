@@ -79,6 +79,12 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log(rotationSpeed);
 
         }
+        else if (HitIndicator.rotationPower < 0)
+        {
+            HitIndicator.rotationPower++;
+            rotationSpeed = rotationSpeed - rotationSpeedIncrement;
+            Debug.Log(rotationSpeed);
+        }
     }
 
     void FixedUpdate()

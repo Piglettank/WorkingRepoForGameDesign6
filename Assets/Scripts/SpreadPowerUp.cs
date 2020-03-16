@@ -51,6 +51,7 @@ public class SpreadPowerUp : MonoBehaviour
         {
             HitIndicator.spreadPower++;
             HitIndicator.hasPowerUp = true;
+            HitIndicator.rotationPower--;
         }
 
         // IF YOU HIT AN ENEMY YOU GET SPREAD POWER
@@ -83,5 +84,6 @@ public class SpreadPowerUp : MonoBehaviour
     void Update()
     {
         Spread();
+        
     }
 }
