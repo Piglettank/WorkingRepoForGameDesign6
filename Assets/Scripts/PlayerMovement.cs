@@ -85,6 +85,12 @@ public class PlayerMovement : MonoBehaviour
             rotationSpeed = rotationSpeed - rotationSpeedIncrement;
             Debug.Log(rotationSpeed);
         }
+
+        // ROTATION LIMIT
+        if (rotationSpeed < 50)
+        {
+            rotationSpeed = 50f;
+        }
     }
 
     void FixedUpdate()
